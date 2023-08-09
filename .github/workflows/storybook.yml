@@ -1,8 +1,7 @@
 name: Storybook Deployment
 on:
-  pull_request:
-    branches:
-      - develop
+  push:
+    branches: ['develop', 'main']
 jobs:
   storybook:
     runs-on: ubuntu-20.04
