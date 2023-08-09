@@ -1,6 +1,7 @@
 import type { Meta } from '@storybook/react';
 
-import { STATION_DETAILS_TITLE_LIST } from '../../constants';
+import { STATION_DETAILS_TITLE_LIST } from '@constant';
+
 import CustomTableHead from './CustomTableHead';
 
 const meta = {

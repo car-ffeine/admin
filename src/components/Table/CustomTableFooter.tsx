@@ -2,10 +2,14 @@ import { TableFooter, TablePagination, TableRow } from '@mui/material';
 
 import type { ChangeEvent, MouseEvent } from 'react';
 
-import { ROWS_PER_PAGE } from '../../constants';
-import { elements } from '../../mocks';
-import { pageStore, rowsPerPageStore } from '../../stores/pageStore';
-import { useExternalState } from '../../utils/external-state';
+import { useExternalState } from '@util/external-state';
+
+import { pageStore, rowsPerPageStore } from '@store/pageStore';
+
+import { elements } from '@mock';
+
+import { ROWS_PER_PAGE } from '@constant';
+
 import CustomTablePagination from './CustomTablePagination';
 
 function CustomTableFooter() {
@@ -30,6 +34,7 @@ function CustomTableFooter() {
           rowsPerPageOptions={[ROWS_PER_PAGE]}
           count={elements.length}
           rowsPerPage={rowsPerPage}
+          colSpan={3}
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
