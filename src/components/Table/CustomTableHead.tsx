@@ -9,10 +9,10 @@ interface Props {
 
 function CustomTableHead({ titleList }: Props) {
   return (
-    <TableHead>
+    <TableHead css={tableHeadCss}>
       <TableRow>
         {titleList.map((title, index) => (
-          <TableCell key={index} align={index ? 'right' : undefined} css={tableHeadCss}>
+          <TableCell key={index} align="center" css={tableHeadItemsCss}>
             {title}
           </TableCell>
         ))}
@@ -22,8 +22,14 @@ function CustomTableHead({ titleList }: Props) {
 }
 
 const tableHeadCss = css`
+  white-space: pre;
+  box-shadow: -2px 1px 12px 1px #eee;
+`;
+
+const tableHeadItemsCss = css`
   font-weight: bold;
-  background: #f1f3f8;
+  color: #0a5ed9;
+  border-bottom: 0;
 `;
 
 export default CustomTableHead;
