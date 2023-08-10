@@ -6,11 +6,6 @@ on:
     branches-ignore:
       - main
 
-permissions:
-  contents: 'read'
-  id-token: 'write'
-  issues: 'write'
-
 jobs:
   append_issue_number_to_pr_body:
     runs-on: ubuntu-latest
