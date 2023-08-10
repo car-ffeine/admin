@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react';
 
-import { STATION_DETAILS_TITLE_LIST } from '@constant';
+import { STATION_DETAILS_CATEGORY_LIST } from '@constant';
 
 import AdminTableHead from './AdminTableHead';
 
@@ -8,7 +8,7 @@ const meta = {
   component: AdminTableHead,
   tags: ['autodocs'],
   args: {
-    titleList: STATION_DETAILS_TITLE_LIST,
+    titleList: STATION_DETAILS_CATEGORY_LIST,
   },
   argTypes: {
     titleList: {
@@ -23,5 +23,5 @@ const meta = {
 export default meta;
 
 export const Default = () => {
-  return <AdminTableHead titleList={STATION_DETAILS_TITLE_LIST} />;
+  return <AdminTableHead titleList={STATION_DETAILS_CATEGORY_LIST} />;
 };

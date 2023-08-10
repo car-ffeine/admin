@@ -1,4 +1,4 @@
-export const STATION_DETAILS_TITLE_LIST = [
+export const STATION_DETAILS_CATEGORY_LIST = [
   'ID',
   '이름',
   '주소',

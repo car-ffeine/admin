@@ -6,7 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 
 import { elements } from '@mock';
 
-import { STATION_DETAILS_TITLE_LIST } from '@constant';
+import { STATION_DETAILS_CATEGORY_LIST } from '@constant';
 
 import AdminTableBody from './AdminTableBody';
 import AdminTableHead from './AdminTableHead';
@@ -22,7 +22,7 @@ function AdminTable({ title }: TableProps) {
       <Title>{title}</Title>
       <TableContainer component={Paper} css={boxShadowCss}>
         <Table sx={{ minWidth: 500, overflowX: 'auto' }} aria-label="정보 표">
-          <AdminTableHead titleList={STATION_DETAILS_TITLE_LIST} />
+          <AdminTableHead titleList={STATION_DETAILS_CATEGORY_LIST} />
           <AdminTableBody elements={elements} />
         </Table>
       </TableContainer>
