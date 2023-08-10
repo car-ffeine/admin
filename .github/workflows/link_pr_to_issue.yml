@@ -9,6 +9,7 @@ on:
 jobs:
   append_issue_number_to_pr_body:
     runs-on: ubuntu-latest
+    permissions: write-all
     steps:
       - name: append feature number to pr body pr branch = feat/(issueNumber)
         uses: actions/github-script@v4
