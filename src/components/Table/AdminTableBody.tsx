@@ -40,6 +40,13 @@ function AdminTableBody({ elements }: Props) {
           >
             {element.address}
           </TableCell>
+          <TableCell
+            align="center"
+            css={borderBottomCss}
+            sx={{ minWidth: 280, textAlign: 'center' }}
+          >
+            {element.detailLocation}
+          </TableCell>
           <TableCell align="center" css={[tableItemsCss, borderBottomCss]}>
             {element.companyName}
           </TableCell>
