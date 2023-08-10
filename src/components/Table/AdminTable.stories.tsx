@@ -1,10 +1,10 @@
 import type { Meta } from '@storybook/react';
 
-import type { TableProps } from './CustomTable';
-import CustomTable from './CustomTable';
+import type { TableProps } from './AdminTable';
+import AdminTable from './AdminTable';
 
 const meta = {
-  component: CustomTable,
+  component: AdminTable,
   tags: ['autodocs'],
   args: {
     title: '전체 충전소',
@@ -14,10 +14,10 @@ const meta = {
       description: '페이지 제목을 변경할 수 있습니다.',
     },
   },
-} satisfies Meta<typeof CustomTable>;
+} satisfies Meta<typeof AdminTable>;
 
 export default meta;
 
 export const Default = (args: TableProps) => {
-  return <CustomTable {...args} />;
+  return <AdminTable {...args} />;
 };

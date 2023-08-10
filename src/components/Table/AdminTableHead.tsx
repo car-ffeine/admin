@@ -7,7 +7,7 @@ interface Props {
   titleList: readonly string[];
 }
 
-function CustomTableHead({ titleList }: Props) {
+function AdminTableHead({ titleList }: Props) {
   return (
     <TableHead css={tableHeadCss}>
       <TableRow>
@@ -32,4 +32,4 @@ const tableHeadItemsCss = css`
   border-bottom: 0;
 `;
 
-export default CustomTableHead;
+export default AdminTableHead;

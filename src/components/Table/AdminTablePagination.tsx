@@ -4,7 +4,7 @@ import type { ChangeEvent } from 'react';
 
 import { LAST_PAGE } from '@constant';
 
-function CustomTablePagination() {
+function AdminTablePagination() {
   const lastPage = LAST_PAGE;
 
   const handleChangePage = (_: ChangeEvent<unknown>, page: number) => {
@@ -22,4 +22,4 @@ function CustomTablePagination() {
   );
 }
 
-export default CustomTablePagination;
+export default AdminTablePagination;

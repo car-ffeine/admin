@@ -8,25 +8,25 @@ import { elements } from '@mock';
 
 import { STATION_DETAILS_TITLE_LIST } from '@constant';
 
-import CustomTableBody from './CustomTableBody';
-import CustomTableHead from './CustomTableHead';
-import CustomTablePagination from './CustomTablePagination';
+import AdminTableBody from './AdminTableBody';
+import AdminTableHead from './AdminTableHead';
+import AdminTablePagination from './AdminTablePagination';
 
 export interface TableProps {
   title: string;
 }
 
-function CustomTable({ title }: TableProps) {
+function AdminTable({ title }: TableProps) {
   return (
     <>
       <Title>{title}</Title>
       <TableContainer component={Paper} css={boxShadowCss}>
         <Table sx={{ minWidth: 500, overflowX: 'auto' }} aria-label="정보 표">
-          <CustomTableHead titleList={STATION_DETAILS_TITLE_LIST} />
-          <CustomTableBody elements={elements} />
+          <AdminTableHead titleList={STATION_DETAILS_TITLE_LIST} />
+          <AdminTableBody elements={elements} />
         </Table>
       </TableContainer>
-      <CustomTablePagination />
+      <AdminTablePagination />
     </>
   );
 }
@@ -44,4 +44,4 @@ const boxShadowCss = css`
     0 1px 3px 0 rgba(0, 0, 0, 0.015);
 `;
 
-export default CustomTable;
+export default AdminTable;

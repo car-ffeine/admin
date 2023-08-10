@@ -1,3 +1,3 @@
-import CustomTable from './CustomTable';
+import AdminTable from './AdminTable';
 
-export default CustomTable;
+export default AdminTable;

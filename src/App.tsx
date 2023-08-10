@@ -2,7 +2,7 @@ import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import { koKR } from '@mui/material/locale';
 import 'common.css';
 
-import CustomTable from '@component/Table';
+import AdminTable from '@component/Table';
 
 const theme = createTheme(
   {
@@ -18,7 +18,7 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <CustomTable title="전체 충전소" />
+        <AdminTable title="전체 충전소" />
       </ThemeProvider>
     </>
   );

@@ -12,7 +12,7 @@ interface Props {
 }
 
 // TODO: 하드 코딩 없앨 것
-function CustomTableBody({ elements }: Props) {
+function AdminTableBody({ elements }: Props) {
   const size = ROWS_PER_PAGE;
 
   const emptyRows = size - Math.min(size, elements.length);
@@ -88,4 +88,4 @@ const borderBottomCss = css`
   border-bottom: 0;
 `;
 
-export default CustomTableBody;
+export default AdminTableBody;
