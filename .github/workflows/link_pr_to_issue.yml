@@ -6,10 +6,14 @@ on:
     branches-ignore:
       - main
 
+permissions:
+  contents: 'read'
+  id-token: 'write'
+  issues: 'write'
+
 jobs:
   append_issue_number_to_pr_body:
     runs-on: ubuntu-latest
-    permissions: write-all
     steps:
       - name: append feature number to pr body pr branch = feat/(issueNumber)
         uses: actions/github-script@v4
