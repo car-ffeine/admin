@@ -14,7 +14,7 @@ function ModalContainer() {
     setIsModalOpen(false);
   };
 
-  const handleSubmitFom = () => {
+  const handleSubmitForm = () => {
     handleCloseModal();
   };
 
@@ -23,12 +23,14 @@ function ModalContainer() {
       <>
         <div>form이 들어갈 공간</div>
         <ButtonContainer>
-          <Button sx={{ justifyContent: 'end', marginRight: 1 }} onClick={handleCloseModal}>
+          <Button
+            sx={{ marginRight: 1, color: '#6e6e6e' }}
+            color="inherit"
+            onClick={handleCloseModal}
+          >
             취소하기
           </Button>
-          <Button sx={{ justifyContent: 'end' }} onClick={handleSubmitFom}>
-            수정하기
-          </Button>
+          <Button onClick={handleSubmitForm}>수정하기</Button>
         </ButtonContainer>
       </>
     </Modal>
@@ -40,6 +42,10 @@ const ButtonContainer = styled.div`
   justify-content: end;
   margin-top: 16px;
   word-break: keep-all;
+
+  &button {
+    justify-content: end;
+  }
 `;
 
 export default ModalContainer;

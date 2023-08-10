@@ -16,13 +16,11 @@ const theme = createTheme(
 
 function App() {
   return (
-    <>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <AdminTable title="전체 충전소" />
-        <ModalContainer />
-      </ThemeProvider>
-    </>
+    <ThemeProvider theme={theme}>
+      <ModalContainer />
+      <CssBaseline />
+      <AdminTable title="전체 충전소" />
+    </ThemeProvider>
   );
 }
 

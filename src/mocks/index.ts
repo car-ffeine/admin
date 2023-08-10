@@ -1,9 +1,4 @@
 import { ROWS_PER_PAGE } from '../constants';
-import type { StationProps } from '../types';
-
-const createData = (props: StationProps) => {
-  return { ...props };
-};
 
 const mock = {
   stationId: 'HA_1234',
@@ -21,4 +16,4 @@ const mock = {
   stationState: 'null',
 };
 
-export const elements = Array.from({ length: ROWS_PER_PAGE }, () => createData(mock));
+export const elements = Array.from({ length: ROWS_PER_PAGE }, () => mock);
