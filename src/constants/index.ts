@@ -20,18 +20,18 @@ export const LAST_PAGE = 12;
 export const MENU_LIST = [
     {
         name: '회원 관리',
-        link: "/members"
+        link: "#admin/members"
     },
     {
         name: '충전소 관리',
-        link: "/stations"
+        link: "#admin/stations"
     },
     {
         name: '충전소 제보 관리',
-        link: "/misinformation-reports"
+        link: "#admin/misinformation-reports"
     },
     {
         name: '충전소 신고 관리',
-        link: "/fault-reports"
+        link: "#admin/fault-reports"
     },
 ]
