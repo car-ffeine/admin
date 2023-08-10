@@ -8,10 +8,10 @@ const meta = {
   component: AdminTableHead,
   tags: ['autodocs'],
   args: {
-    titleList: STATION_DETAILS_CATEGORY_LIST,
+    categoryList: STATION_DETAILS_CATEGORY_LIST,
   },
   argTypes: {
-    titleList: {
+    categoryList: {
       control: {
         type: 'array',
       },
@@ -23,5 +23,5 @@ const meta = {
 export default meta;
 
 export const Default = () => {
-  return <AdminTableHead titleList={STATION_DETAILS_CATEGORY_LIST} />;
+  return <AdminTableHead categoryList={STATION_DETAILS_CATEGORY_LIST} />;
 };

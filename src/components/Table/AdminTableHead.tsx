@@ -4,16 +4,16 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
 interface Props {
-  titleList: readonly string[];
+  categoryList: readonly string[];
 }
 
-function AdminTableHead({ titleList }: Props) {
+function AdminTableHead({ categoryList }: Props) {
   return (
     <TableHead css={tableHeadCss}>
       <TableRow>
-        {titleList.map((title, index) => (
+        {categoryList.map((category, index) => (
           <TableCell key={index} align="center" css={tableHeadItemsCss}>
-            {title}
+            {category}
           </TableCell>
         ))}
       </TableRow>

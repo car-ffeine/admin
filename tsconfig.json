@@ -28,7 +28,8 @@
       "@constant/*": ["constants/*"],
       "@mock": ["mocks/index"],
       "@mock/*": ["mocks/*"],
-      "@component/*": ["components/*"]
+      "@component/*": ["components/*"],
+      "@common/*": ["common/*"]
     }
   },
   "include": ["src"],

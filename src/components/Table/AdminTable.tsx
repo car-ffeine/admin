@@ -22,7 +22,7 @@ function AdminTable({ title }: TableProps) {
       <Title>{title}</Title>
       <TableContainer component={Paper} css={boxShadowCss}>
         <Table sx={{ minWidth: 500, overflowX: 'auto' }} aria-label="정보 표">
-          <AdminTableHead titleList={STATION_DETAILS_CATEGORY_LIST} />
+          <AdminTableHead categoryList={STATION_DETAILS_CATEGORY_LIST} />
           <AdminTableBody elements={elements} />
         </Table>
       </TableContainer>
