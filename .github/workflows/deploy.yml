@@ -1,6 +1,9 @@
 name: Deploy static content to Pages
 
 on:
+  pull_request:
+    branches:
+      - develop
   push:
     branches: ['develop', 'main']
 
