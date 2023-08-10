@@ -33,8 +33,8 @@ function CustomTable({ title }: TableProps) {
 
 const Title = styled.h1`
   margin-bottom: 36px;
-  font-size: 21px;
-  color: #3e3e3e;
+  font-size: 19px;
+  color: #333;
 `;
 
 const boxShadowCss = css`
