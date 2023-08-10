@@ -16,10 +16,12 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.3",
     "@mui/material": "^5.14.4",
+    "@mui/x-data-grid": "^6.11.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@storybook/addon-a11y": "^7.2.1",
     "@storybook/addon-essentials": "7.2.1",
     "@storybook/addon-interactions": "7.2.1",
     "@storybook/addon-links": "7.2.1",
@@ -44,8 +46,12 @@
     "prettier": "^3.0.1",
     "storybook": "7.2.1",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5"
+    "vite": "^4.4.5",
+    "vite-tsconfig-paths": "^4.2.0"
   },
   "readme": "ERROR: No README data found!",
-  "_id": "admin@0.0.0"
+  "_id": "admin@0.0.0",
+  "resolutions": {
+    "jackspeak": "2.1.1"
+  }
 }
