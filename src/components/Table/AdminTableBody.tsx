@@ -80,7 +80,7 @@ function AdminTableBody({ elements }: Props) {
             {element.operationTime}
           </TableCell>
           <TableCell align="center" css={[tableItemsCss, borderBottomCss]}>
-            {element.private_reason}
+            {element.privateReason}
           </TableCell>
           <TableCell align="center" css={[tableItemsCss, borderBottomCss]}>
             {element.stationState}

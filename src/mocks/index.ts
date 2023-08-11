@@ -12,7 +12,7 @@ const mock = {
   latitude: 21.45235,
   longitude: 37.4121,
   operationTime: '08:00 ~ 20:00',
-  private_reason: 'null',
+  privateReason: 'null',
   stationState: 'null',
 };
 

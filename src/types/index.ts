@@ -7,7 +7,7 @@ export interface StationProps {
   isParkingFree: boolean;
   isPrivate: boolean;
   operationTime: string | null;
-  private_reason: string | null;
+  privateReason: string | null;
   stationState: string | null;
   address: string | null;
   latitude: number;
