@@ -1,3 +1,5 @@
+import type { STATION_DETAILS_CATEGORIES } from '@constant';
+
 export interface StationProps {
   stationId: string;
   stationName: string;
@@ -13,6 +15,9 @@ export interface StationProps {
   latitude: number;
   longitude: number;
 }
+
+export type StationCategoryKeys = keyof typeof STATION_DETAILS_CATEGORIES;
+export type StationCategoryValues = (typeof STATION_DETAILS_CATEGORIES)[StationCategoryKeys];
 
 export interface StationEditProps extends Omit<StationProps, 'stationId'> {}
 

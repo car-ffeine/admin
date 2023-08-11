@@ -3,10 +3,10 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
-import type { STATION_DETAILS_CATEGORIES } from '@constant';
+import type { StationCategoryValues } from '@type';
 
 interface Props {
-  categoryList: readonly (typeof STATION_DETAILS_CATEGORIES)[keyof typeof STATION_DETAILS_CATEGORIES][];
+  categoryList: readonly StationCategoryValues[];
 }
 
 function AdminTableHead({ categoryList }: Props) {
