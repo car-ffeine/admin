@@ -18,6 +18,8 @@ import { getTypedObjectFromEntries } from '@util/getTypedObjectFromEntries';
 import { modalStateStore } from '@store/modalStateStore';
 import { toastActions } from '@store/toastStore';
 
+import { lineClampCss } from '@style';
+
 import { STATION_DETAILS_CATEGORIES } from '@constant';
 
 import type { StationCategoryValuesWithoutID } from '@type';
@@ -107,7 +109,7 @@ function Form({ element }: Props) {
                   type="text"
                   label={STATION_DETAILS_CATEGORIES[key]}
                   variant="outlined"
-                  css={label}
+                  css={labelCss}
                   value={inputs[key]}
                   onChange={handleChangeInput}
                 />
@@ -122,16 +124,16 @@ function Form({ element }: Props) {
                     value={String(inputs[key])}
                     onChange={handleChangeSelect}
                   >
-                    <MenuItem value="true" css={selectItem}>
-                      True
+                    <MenuItem value="true" css={selectItemCss}>
+                      true
                     </MenuItem>
-                    <MenuItem value="false" css={selectItem}>
-                      False
+                    <MenuItem value="false" css={selectItemCss}>
+                      false
                     </MenuItem>
                   </Select>
                 </FormControl>
               )}
-              <Caption>{String(value)}</Caption>
+              <Caption title={String(value)}>{String(value)}</Caption>
             </div>
           );
         })}
@@ -173,13 +175,13 @@ const Title = styled.h3`
   margin-bottom: 40px;
 `;
 
-const label = css`
+const labelCss = css`
   & label {
     font-size: 15px;
   }
 `;
 
-const selectItem = css`
+const selectItemCss = css`
   padding: 0 inherit;
   font-size: 14px;
 `;
@@ -196,6 +198,9 @@ const ButtonContainer = styled.div`
 `;
 
 const Caption = styled.p`
+  ${lineClampCss(2)}
+
+  padding: 0 14px;
   font-size: 14px;
   color: #333;
 `;

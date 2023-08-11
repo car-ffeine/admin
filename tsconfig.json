@@ -29,7 +29,9 @@
       "@mock": ["mocks/index"],
       "@mock/*": ["mocks/*"],
       "@component/*": ["components/*"],
-      "@common/*": ["common/*"]
+      "@common/*": ["common/*"],
+      "@style": ["styles/index"],
+      "@style/*": ["styles/*"]
     }
   },
   "include": ["src"],
