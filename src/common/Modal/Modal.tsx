@@ -83,4 +83,9 @@ const ModalContent = styled.div`
 
   border-radius: 10px;
   overflow-y: auto;
+
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
