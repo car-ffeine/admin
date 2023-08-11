@@ -1,26 +1,26 @@
-import {css} from '@emotion/react';
-import {AppBar, Box, Toolbar, Typography} from '@mui/material';
+import { css } from '@emotion/react';
+import { AppBar, Box, Toolbar, Typography } from '@mui/material';
 
 import React from 'react';
 
 export interface NavigationProps {
-    title: string;
-    children: React.ReactElement;
+  title: string;
+  children: React.ReactElement;
 }
 
-function Navigation({title, children}: NavigationProps) {
-    return (
-        <Box sx={{display: 'flex'}}>
-            <AppBar component="nav" css={headerCss}>
-                <Toolbar>
-                    <Typography variant="h6" component="div" css={headerTitleCss}>
-                        {title}
-                    </Typography>
-                    {children}
-                </Toolbar>
-            </AppBar>
-        </Box>
-    );
+function Navigation({ title, children }: NavigationProps) {
+  return (
+    <Box sx={{ display: 'flex' }}>
+      <AppBar component="nav" css={headerCss}>
+        <Toolbar>
+          <Typography variant="h6" component="div" css={headerTitleCss}>
+            {title}
+          </Typography>
+          {children}
+        </Toolbar>
+      </AppBar>
+    </Box>
+  );
 }
 
 const headerTitleCss = css`
@@ -29,7 +29,7 @@ const headerTitleCss = css`
   display: {
     xs: none;
     sm: block;
-  };
+  }
   font-weight: bold;
 `;
 

@@ -8,7 +8,7 @@ interface NavigationContainerProps {
   menus: Menu[];
 }
 
-function NavigationContainer({title, menus}: NavigationContainerProps) {
+function NavigationContainer({ title, menus }: NavigationContainerProps) {
   return <Navigation title={title} children={<NavigationMenu menus={menus} />} />;
 }
 
