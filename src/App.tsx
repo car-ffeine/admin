@@ -3,8 +3,10 @@ import { koKR } from '@mui/material/locale';
 import 'common.css';
 
 import ModalContainer from '@component/ModalContainer';
-import Navigation from '@component/Navigation';
+import NavigationContainer from '@component/Navigation';
 import AdminTable from '@component/Table';
+
+import { MENU_LIST } from '@constant';
 
 const theme = createTheme(
   {
@@ -20,7 +22,7 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Navigation title={'카페인 Admin'} />
+        <NavigationContainer title={'ADMIN'} menus={MENU_LIST} />
         <AdminTable title="전체 충전소" />
         <ModalContainer />
       </ThemeProvider>

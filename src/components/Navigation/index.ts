@@ -1,3 +1,3 @@
-import Navigation from '@component/Navigation/Navigation.tsx';
+import NavigationContainer from '@component/Navigation/NavigationContainer.tsx';
 
-export default Navigation;
+export default NavigationContainer;

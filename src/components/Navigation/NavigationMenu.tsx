@@ -1,7 +1,4 @@
-import { css } from '@emotion/react';
-import { ListItem, ListItemButton, ListItemText } from '@mui/material';
-
-import * as React from 'react';
+import { Button } from '@mui/material';
 
 import type { Menu } from '@type';
 
@@ -11,16 +8,8 @@ interface NavigationProps {
 
 export const NavigationMenu = ({ menus }: NavigationProps) => {
   return menus.map((menu, index) => (
-    <ListItem key={index} disablePadding>
-      <ListItemButton href={menu.link}>
-        <ListItemText primary={menu.name} css={tableHeadItemsCss}>
-          {menu.name}
-        </ListItemText>
-      </ListItemButton>
-    </ListItem>
+    <Button key={index} sx={{ color: '#fff' }}>
+      {menu.name}
+    </Button>
   ));
 };
-
-const tableHeadItemsCss = css`
-  color: white;
-`;
