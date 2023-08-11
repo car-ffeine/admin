@@ -1,6 +1,11 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import Button from '@mui/material/Button';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import type { SelectChangeEvent } from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 
 import type { ChangeEvent } from 'react';
@@ -11,10 +16,12 @@ import { getTypedObjectEntries } from '@util/getTypedObjectEntries';
 import { getTypedObjectFromEntries } from '@util/getTypedObjectFromEntries';
 
 import { modalStateStore } from '@store/modalStateStore';
+import { toastActions } from '@store/toastStore';
 
 import { STATION_DETAILS_CATEGORIES } from '@constant';
 
-import type { StationEditProps } from '@type';
+import type { StationCategoryValuesWithoutID } from '@type';
+import { type StationEditProps } from '@type';
 
 interface Props {
   element: StationEditProps;
@@ -22,34 +29,69 @@ interface Props {
 
 function Form({ element }: Props) {
   const [inputs, setInputs] = useState(element);
+
   const setIsModalOpen = useSetExternalState(modalStateStore);
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
 
-  const handleInputChange = ({ target: { value, name } }: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeInput = ({ target: { value, name } }: ChangeEvent<HTMLInputElement>) => {
     setInputs((prevData) => ({
       ...prevData,
       [name]: value,
     }));
   };
 
-  const handleSubmitForm = ({ target }: FormEvent<HTMLFormElement>) => {
-    handleCloseModal();
+  const handleChangeSelect = ({ target: { value, name } }: SelectChangeEvent) => {
+    setInputs((prevData) => ({
+      ...prevData,
+      [name]: value === 'true' ? true : false,
+    }));
+  };
 
+  const handleSubmitForm = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const { target } = event;
     if (!(target instanceof HTMLFormElement)) {
       return;
     }
 
+    const { showToast } = toastActions;
+
     const formData = new FormData(target);
+    const areValuesEqual = compareFormDataToObject(formData);
 
-    const editedData = getTypedObjectFromEntries([...formData]);
-    console.log(getTypedObjectFromEntries([...formData]));
-
-    if (Object.is(element, editedData)) {
-      return;
+    if (areValuesEqual) {
+      return showToast('변경사항이 없습니다', 'error');
     }
+
+    handleCloseModal();
+  };
+
+  const compareFormDataToObject = (formData: FormData) => {
+    const editedFormData = getTypedObjectFromEntries([...formData]);
+    const originalValues: StationCategoryValuesWithoutID[] = Object.values(element);
+    const formValues = Object.values(editedFormData).map((value) => convertValue(value));
+
+    return JSON.stringify(originalValues) === JSON.stringify(formValues);
+  };
+
+  const convertValue = (value: string | FormDataEntryValue) => {
+    if (value === 'true') {
+      return true;
+    }
+    if (value === 'false') {
+      return false;
+    }
+
+    const numValue = value === '' ? NaN : Number(value);
+    if (!isNaN(numValue)) {
+      return numValue;
+    }
+
+    return value;
   };
 
   return (
@@ -59,16 +101,37 @@ function Form({ element }: Props) {
         {getTypedObjectEntries(element).map(([key, value]) => {
           return (
             <div key={key}>
-              <TextField
-                name={key}
-                type="text"
-                label={STATION_DETAILS_CATEGORIES[key]}
-                variant="outlined"
-                css={label}
-                value={inputs[key]}
-                onChange={handleInputChange}
-              />
-              <Caption>{value}</Caption>
+              {typeof value !== 'boolean' ? (
+                <TextField
+                  name={key}
+                  type="text"
+                  label={STATION_DETAILS_CATEGORIES[key]}
+                  variant="outlined"
+                  css={label}
+                  value={inputs[key]}
+                  onChange={handleChangeInput}
+                />
+              ) : (
+                <FormControl fullWidth>
+                  <InputLabel id="select-label">{STATION_DETAILS_CATEGORIES[key]}</InputLabel>
+                  <Select
+                    labelId="select-label"
+                    id="select"
+                    name={key}
+                    label={STATION_DETAILS_CATEGORIES[key]}
+                    value={String(inputs[key])}
+                    onChange={handleChangeSelect}
+                  >
+                    <MenuItem value="true" css={selectItem}>
+                      True
+                    </MenuItem>
+                    <MenuItem value="false" css={selectItem}>
+                      False
+                    </MenuItem>
+                  </Select>
+                </FormControl>
+              )}
+              <Caption>{String(value)}</Caption>
             </div>
           );
         })}
@@ -92,12 +155,16 @@ const Fieldset = styled.fieldset`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 26px 6px;
+  gap: 40px 6px;
 
   border: 0;
 
   & > div {
     width: 30%;
+
+    & > div {
+      width: 100%;
+    }
   }
 `;
 
@@ -110,6 +177,11 @@ const label = css`
   & label {
     font-size: 15px;
   }
+`;
+
+const selectItem = css`
+  padding: 0 inherit;
+  font-size: 14px;
 `;
 
 const ButtonContainer = styled.div`
