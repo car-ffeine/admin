@@ -11,6 +11,7 @@ import { STATION_DETAILS_CATEGORY_LIST } from '@constant';
 import AdminTableBody from './AdminTableBody';
 import AdminTableHead from './AdminTableHead';
 import AdminTablePagination from './AdminTablePagination';
+import { Box } from '@mui/material';
 
 export interface TableProps {
   title: string;
@@ -18,7 +19,7 @@ export interface TableProps {
 
 function AdminTable({ title }: TableProps) {
   return (
-    <>
+    <Box sx={{margin: '32px'}}>
       <Title>{title}</Title>
       <TableContainer component={Paper} css={boxShadowCss}>
         <Table sx={{ minWidth: 500, overflowX: 'auto' }} aria-label="정보 표">
@@ -27,7 +28,7 @@ function AdminTable({ title }: TableProps) {
         </Table>
       </TableContainer>
       <AdminTablePagination />
-    </>
+    </Box>
   );
 }
 
