@@ -13,3 +13,9 @@ export interface StationProps {
   latitude: number;
   longitude: number;
 }
+
+export interface StationEditProps extends Omit<StationProps, 'stationId'> {}
+
+export interface ModalElementsProps {
+  elements: StationProps[];
+}

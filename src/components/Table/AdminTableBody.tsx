@@ -9,14 +9,10 @@ import { modalStateStore } from '@store/modalStateStore';
 
 import { ROWS_PER_PAGE } from '@constant';
 
-import type { StationProps } from '@type';
-
-interface Props {
-  elements: StationProps[];
-}
+import type { ModalElementsProps } from '@type';
 
 // TODO: 하드 코딩 없앨 것
-function AdminTableBody({ elements }: Props) {
+function AdminTableBody({ elements }: ModalElementsProps) {
   const setIsModalOpen = useSetExternalState(modalStateStore);
 
   const handleOpenModal = () => {
