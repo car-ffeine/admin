@@ -12,7 +12,6 @@ import { getToastColor } from './style';
 import type { Color } from './types';
 
 const meta = {
-  title: 'Components/Toast',
   component: Toast,
   tags: ['autodocs'],
   args: {
@@ -65,21 +64,21 @@ export const Default = (args: ToastProps) => {
 export const Colors = () => {
   return (
     <>
-      <p>Primary</p>
+      <h3>Primary</h3>
       <S.Toast color="primary">이삭 토스트</S.Toast>
-      <p>Secondary</p>
+      <h3>Secondary</h3>
       <S.Toast color="secondary">이삭 토스트</S.Toast>
-      <p>Success</p>
+      <h3>Success</h3>
       <S.Toast color="success">이삭 토스트</S.Toast>
-      <p>Warning</p>
+      <h3>Warning</h3>
       <S.Toast color="warning">이삭 토스트</S.Toast>
-      <p>Error</p>
+      <h3>Error</h3>
       <S.Toast color="error">이삭 토스트</S.Toast>
-      <p>Info</p>
+      <h3>Info</h3>
       <S.Toast color="info">이삭 토스트</S.Toast>
-      <p>Light</p>
+      <h3>Light</h3>
       <S.Toast color="light">이삭 토스트</S.Toast>
-      <p>Dark</p>
+      <h3>Dark</h3>
       <S.Toast color="dark">이삭 토스트</S.Toast>
     </>
   );
@@ -88,16 +87,16 @@ export const Colors = () => {
 const S = {
   Toast: styled.div<{ color: Color }>`
     width: max-content;
-    max-width: 40rem;
-    padding: 1.2rem 2.4rem;
-    font-size: 1.5rem;
+    max-width: 400rem;
+    padding: 12px 24px;
+    font-size: 15px;
     text-align: center;
     word-break: keep-all;
     line-height: 1.5;
     border-radius: 28px;
     font-weight: 500;
     color: #fff;
-    margin-bottom: 2rem;
+    margin-bottom: 20px;
 
     &:last-child {
       margin-bottom: 0;
