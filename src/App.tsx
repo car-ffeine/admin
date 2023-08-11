@@ -2,6 +2,8 @@ import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import { koKR } from '@mui/material/locale';
 import 'common.css';
 
+import ToastContainer from '@common/Toast/ToastContainer';
+
 import ModalContainer from '@component/ModalContainer';
 import AdminTable from '@component/Table';
 
@@ -18,6 +20,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <ModalContainer />
+      <ToastContainer />
       <CssBaseline />
       <AdminTable title="전체 충전소" />
     </ThemeProvider>
