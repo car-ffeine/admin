@@ -15,7 +15,7 @@ export const NavigationMenu = ({ menus }: NavigationProps) => {
 
   const handleClickMenu = (menu: Menu) => {
     if (menu === '간편 로그인') {
-      openModal(<Login />);
+      openModal(<Login />, 500);
     }
   };
 
