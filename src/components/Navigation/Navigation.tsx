@@ -1,11 +1,11 @@
 import { css } from '@emotion/react';
 import { AppBar, Box, Toolbar, Typography } from '@mui/material';
 
-import React from 'react';
+import type { JSX } from 'react';
 
 export interface NavigationProps {
   title: string;
-  children: React.ReactElement;
+  children: JSX.Element;
 }
 
 function Navigation({ title, children }: NavigationProps) {

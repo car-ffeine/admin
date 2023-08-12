@@ -9,7 +9,11 @@ interface NavigationContainerProps {
 }
 
 function NavigationContainer({ title, menus }: NavigationContainerProps) {
-  return <Navigation title={title} children={<NavigationMenu menus={menus} />} />;
+  return (
+    <Navigation title={title}>
+      <NavigationMenu menus={menus} />
+    </Navigation>
+  );
 }
 
 export default NavigationContainer;
