@@ -9,14 +9,10 @@ import { modalStateStore } from '@store/modalStateStore';
 
 import { ROWS_PER_PAGE } from '@constant';
 
-import type { StationProps } from '@type';
-
-interface Props {
-  elements: StationProps[];
-}
+import type { ModalElementsProps } from '@type';
 
 // TODO: 하드 코딩 없앨 것
-function AdminTableBody({ elements }: Props) {
+function AdminTableBody({ elements }: ModalElementsProps) {
   const setIsModalOpen = useSetExternalState(modalStateStore);
 
   const handleOpenModal = () => {
@@ -33,7 +29,7 @@ function AdminTableBody({ elements }: Props) {
         <TableRow key={index}>
           <TableCell
             align="center"
-            css={borderBottomCss}
+            css={tableItemCommonCss}
             sx={{ minWidth: 100, height: 40, cursor: 'pointer' }}
             component="th"
             scope="row"
@@ -41,48 +37,48 @@ function AdminTableBody({ elements }: Props) {
           >
             {element.stationId}
           </TableCell>
-          <TableCell align="center" css={[tableItemsCss, borderBottomCss]}>
+          <TableCell align="center" css={[tableItemSizeCss, tableItemCommonCss]}>
             {element.stationName}
           </TableCell>
           <TableCell
             align="center"
-            css={borderBottomCss}
+            css={tableItemCommonCss}
             sx={{ minWidth: 280, textAlign: 'center' }}
           >
             {element.address}
           </TableCell>
           <TableCell
             align="center"
-            css={borderBottomCss}
+            css={tableItemCommonCss}
             sx={{ minWidth: 280, textAlign: 'center' }}
           >
             {element.detailLocation}
           </TableCell>
-          <TableCell align="center" css={[tableItemsCss, borderBottomCss]}>
+          <TableCell align="center" css={[tableItemSizeCss, tableItemCommonCss]}>
             {element.companyName}
           </TableCell>
-          <TableCell align="center" css={[tableItemsCss, borderBottomCss]}>
+          <TableCell align="center" css={[tableItemSizeCss, tableItemCommonCss]}>
             {element.contact}
           </TableCell>
-          <TableCell align="center" css={borderBottomCss}>
-            {element.isParkingFree ? '무료' : '유료'}
+          <TableCell align="center" css={tableItemCommonCss}>
+            {String(element.isParkingFree)}
           </TableCell>
-          <TableCell align="center" css={borderBottomCss}>
-            {element.isPrivate ? '개방 제한' : '개방'}
+          <TableCell align="center" css={tableItemCommonCss}>
+            {String(element.isPrivate)}
           </TableCell>
-          <TableCell align="center" css={[tableItemsCss, borderBottomCss]}>
+          <TableCell align="center" css={[tableItemSizeCss, tableItemCommonCss]}>
             {element.latitude}
           </TableCell>
-          <TableCell align="center" css={[tableItemsCss, borderBottomCss]}>
+          <TableCell align="center" css={[tableItemSizeCss, tableItemCommonCss]}>
             {element.longitude}
           </TableCell>
-          <TableCell align="center" css={[tableItemsCss, borderBottomCss]}>
+          <TableCell align="center" css={[tableItemSizeCss, tableItemCommonCss]}>
             {element.operationTime}
           </TableCell>
-          <TableCell align="center" css={[tableItemsCss, borderBottomCss]}>
-            {element.private_reason}
+          <TableCell align="center" css={[tableItemSizeCss, tableItemCommonCss]}>
+            {element.privateReason}
           </TableCell>
-          <TableCell align="center" css={[tableItemsCss, borderBottomCss]}>
+          <TableCell align="center" css={[tableItemSizeCss, tableItemCommonCss]}>
             {element.stationState}
           </TableCell>
         </TableRow>
@@ -97,12 +93,12 @@ function AdminTableBody({ elements }: Props) {
   );
 }
 
-const tableItemsCss = css`
+const tableItemSizeCss = css`
   min-width: 200px;
   height: 76px;
 `;
 
-const borderBottomCss = css`
+const tableItemCommonCss = css`
   border-bottom: 0;
 `;
 

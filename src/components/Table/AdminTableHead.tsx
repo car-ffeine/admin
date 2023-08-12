@@ -3,8 +3,10 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
+import type { StationCategoryValues } from '@type';
+
 interface Props {
-  categoryList: readonly string[];
+  categoryList: readonly StationCategoryValues[];
 }
 
 function AdminTableHead({ categoryList }: Props) {
