@@ -9,7 +9,7 @@ interface Props {
   isOpen: boolean;
   onClose: () => void;
   children: JSX.Element;
-  size: number;
+  size?: number;
 }
 
 const Modal = ({ isOpen, onClose, children, size }: Props) => {
@@ -77,11 +77,11 @@ const ModalBackdrop = styled.div`
   animation: ${fadeIn} 0.2s ease-in-out;
 `;
 
-const ModalContent = styled.div<{ size: number }>`
+const ModalContent = styled.div<{ size?: number }>`
   position: relative;
 
   width: 100%;
-  max-width: ${({ size }) => `${size}px`};
+  max-width: ${({ size }) => (size ? `${size}px` : 800)};
   max-height: calc(100% - 56px);
   margin: 28px;
   padding: 36px 28px 20px;
