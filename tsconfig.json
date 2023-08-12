@@ -33,7 +33,8 @@
       "@style": ["styles/index"],
       "@style/*": ["styles/*"],
       "@asset/*": ["assets/*"],
-      "@router": ["router/index"]
+      "@router": ["router/index"],
+      "@hook/*": ["hooks/*"]
     }
   },
   "include": ["src"],

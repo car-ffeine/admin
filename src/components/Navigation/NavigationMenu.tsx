@@ -2,7 +2,7 @@ import { Button } from '@mui/material';
 
 import { modalActions } from '@store/modalStateStore';
 
-import Login from '@component/Login';
+import LoginModalContent from '@component/Login';
 
 import type { Menu } from '@type';
 
@@ -15,7 +15,7 @@ export const NavigationMenu = ({ menus }: NavigationProps) => {
 
   const handleClickMenu = (menu: Menu) => {
     if (menu === '간편 로그인') {
-      openModal(<Login />, 500);
+      openModal(<LoginModalContent />, 500);
     }
   };
 

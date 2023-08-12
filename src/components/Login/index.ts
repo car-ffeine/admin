@@ -1,3 +1,3 @@
-import Login from './Login';
+import LoginModalContent from './LoginModalContent';
 
-export default Login;
+export default LoginModalContent;

@@ -3,7 +3,13 @@ import styled from '@emotion/styled';
 import { ReactComponent as CarFfeineLogo } from '@asset/car-ffeine-logo.svg';
 import { ReactComponent as GoogleLogo } from '@asset/google-logo.svg';
 
-function Login() {
+import { getLoginUri } from '@hook/login/getLoginUri';
+
+function LoginModalContent() {
+  const handleLogin = () => {
+    getLoginUri();
+  };
+
   return (
     <Container>
       <Title>간편 로그인</Title>
@@ -11,7 +17,7 @@ function Login() {
         <CarFfeineLogo width={24} height={24} />
         <span>카페인 관리자 페이지</span>
       </CarFfeineContainer>
-      <GoogleLogin>
+      <GoogleLogin onClick={handleLogin}>
         <GoogleLogo width={24} height={24} />
         <p>구글 로그인</p>
       </GoogleLogin>
@@ -33,7 +39,7 @@ const Title = styled.h2`
 
 const CarFfeineContainer = styled.div`
   font-size: 14px;
-  margin-bottom: 48px;
+  margin-bottom: 44px;
 
   & > svg {
     width: 100%;
@@ -68,4 +74,4 @@ const GoogleLogin = styled.button`
   }
 `;
 
-export default Login;
+export default LoginModalContent;
