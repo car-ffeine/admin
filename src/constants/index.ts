@@ -20,24 +20,9 @@ export const ROWS_PER_PAGE = 5;
 export const LAST_PAGE = 12;
 
 export const MENU_LIST = [
-  {
-    name: '회원 관리',
-    link: '#admin/members',
-  },
-  {
-    name: '충전소 관리',
-    link: '#admin/stations',
-  },
-  {
-    name: '충전소 제보 관리',
-    link: '#admin/misinformation-reports',
-  },
-  {
-    name: '충전소 신고 관리',
-    link: '#admin/fault-reports',
-  },
-  {
-    name: '간편 로그인',
-    link: '',
-  },
-];
+  '회원 관리',
+  '충전소 관리',
+  '충전소 제보 관리',
+  '충전소 신고 관리',
+  '간편 로그인',
+] as const;
