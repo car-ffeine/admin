@@ -32,7 +32,8 @@
       "@common/*": ["common/*"],
       "@style": ["styles/index"],
       "@style/*": ["styles/*"],
-      "@asset/*": ["assets/*"]
+      "@asset/*": ["assets/*"],
+      "@router": ["router/index"]
     }
   },
   "include": ["src"],
