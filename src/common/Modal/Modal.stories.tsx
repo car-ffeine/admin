@@ -7,6 +7,11 @@ import Modal from './Modal';
 
 const meta = {
   component: Modal,
+  argTypes: {
+    isOpen: {
+      description: '-true: 모달이 열린 상태<br /> -false: 모달이 닫힌 상태',
+    },
+  },
 } satisfies Meta<typeof Modal>;
 
 export default meta;

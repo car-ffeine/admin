@@ -1,4 +1,4 @@
-import type { STATION_DETAILS_CATEGORIES } from '@constant';
+import type { MENU_LIST, STATION_DETAILS_CATEGORIES } from '@constant';
 
 export interface StationProps {
   stationId: string;
@@ -16,10 +16,7 @@ export interface StationProps {
   longitude: number;
 }
 
-export interface Menu {
-  name: string;
-  link: string;
-}
+export type Menu = (typeof MENU_LIST)[number];
 
 export type StationCategoryKeys = keyof typeof STATION_DETAILS_CATEGORIES;
 export type StationCategoryValues = (typeof STATION_DETAILS_CATEGORIES)[StationCategoryKeys];

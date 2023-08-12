@@ -31,7 +31,8 @@
       "@component/*": ["components/*"],
       "@common/*": ["common/*"],
       "@style": ["styles/index"],
-      "@style/*": ["styles/*"]
+      "@style/*": ["styles/*"],
+      "@asset/*": ["assets/*"]
     }
   },
   "include": ["src"],

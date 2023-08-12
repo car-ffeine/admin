@@ -1,9 +1,7 @@
 import Button from '@mui/material/Button';
 import type { Meta } from '@storybook/react';
 
-import { useSetExternalState } from '@util/external-state';
-
-import { modalStateStore } from '@store/modalStateStore';
+import { modalActions } from '@store/modalStateStore';
 
 import ModalContainer from './ModalContainer';
 
@@ -14,10 +12,10 @@ const meta = {
 export default meta;
 
 export const Default = () => {
-  const setIsModalOpen = useSetExternalState(modalStateStore);
+  const { openModal } = modalActions;
 
   const handleOpenModal = () => {
-    setIsModalOpen(true);
+    openModal(<ModalContent />);
   };
 
   return (
@@ -27,3 +25,7 @@ export const Default = () => {
     </>
   );
 };
+
+function ModalContent() {
+  return <p>모달</p>;
+}

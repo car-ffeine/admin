@@ -8,6 +8,7 @@
   "importOrder": [
     "^react(.*)",
     "^@util/(.*)$",
+    "^@asset/(.*)$",
     "^@store/(.*)$",
     "^@mock",
     "^@mock/(.*)$",

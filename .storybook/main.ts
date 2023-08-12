@@ -20,7 +20,7 @@ const config: StorybookConfig = {
   docs: {
     autodocs: 'tag',
   },
-  async viteFinal(config, { configType }) {
+  async viteFinal(config) {
     const { config: userConfig } = await loadConfigFromFile(
       path.resolve(__dirname, '../vite.config.ts')
     );

@@ -8,14 +8,14 @@ import Select from '@mui/material/Select';
 import type { SelectChangeEvent } from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 
-import type { ChangeEvent } from 'react';
-import { useState, type FormEvent } from 'react';
+import type { FormEvent, ChangeEvent } from 'react';
+import { useState } from 'react';
 
 import { useSetExternalState } from '@util/external-state';
 import { getTypedObjectEntries } from '@util/getTypedObjectEntries';
 import { getTypedObjectFromEntries } from '@util/getTypedObjectFromEntries';
 
-import { modalStateStore } from '@store/modalStateStore';
+import { modalOpenStore } from '@store/modalStateStore';
 import { toastActions } from '@store/toastStore';
 
 import { lineClampCss } from '@style';
@@ -23,7 +23,7 @@ import { lineClampCss } from '@style';
 import { STATION_DETAILS_CATEGORIES } from '@constant';
 
 import type { StationCategoryValuesWithoutID } from '@type';
-import { type StationEditProps } from '@type';
+import type { StationEditProps } from '@type';
 
 interface Props {
   element: StationEditProps;
@@ -32,7 +32,7 @@ interface Props {
 function Form({ element }: Props) {
   const [inputs, setInputs] = useState(element);
 
-  const setIsModalOpen = useSetExternalState(modalStateStore);
+  const setIsModalOpen = useSetExternalState(modalOpenStore);
 
   const handleCloseModal = () => {
     setIsModalOpen(false);

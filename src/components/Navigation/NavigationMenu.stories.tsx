@@ -16,7 +16,7 @@ const meta = {
       control: {
         type: 'array',
       },
-      description: '메뉴 이름과 링크를 담은 배열입니다.',
+      description: '메뉴 이름을 변경할 수 있습니다.',
     },
   },
 } satisfies Meta<typeof NavigationMenu>;
@@ -26,7 +26,7 @@ export default meta;
 export const Default = () => {
   return (
     <NavigationMenuContainer>
-      <NavigationMenu menus={MENU_LIST} />;
+      <NavigationMenu menus={MENU_LIST} />
     </NavigationMenuContainer>
   );
 };

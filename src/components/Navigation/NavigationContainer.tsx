@@ -5,7 +5,7 @@ import type { Menu } from '@type';
 
 interface NavigationContainerProps {
   title: string;
-  menus: Menu[];
+  menus: readonly Menu[];
 }
 
 function NavigationContainer({ title, menus }: NavigationContainerProps) {

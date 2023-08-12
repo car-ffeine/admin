@@ -7,7 +7,7 @@ const meta = {
   component: Navigation,
   tags: ['autodocs'],
   args: {
-    title: '전체 충전소',
+    title: 'ADMIN',
   },
   argTypes: {
     title: {
