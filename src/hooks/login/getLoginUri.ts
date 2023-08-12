@@ -14,10 +14,10 @@ export const getLoginUri = () => {
 
   axios
     .get(`${LOGIN_BASE_URL}/oauth/google/login-uri?redirect-uri=${REDIRECT_URI}`)
-    .then<LoginUriResponse>((response) => response.data)
+    .then<LoginUriResponse>(({ data }) => data)
     .then(({ loginUri }) => {
       if (loginUri !== undefined) {
-        window.location.href = loginUri.replace(/;/, '');
+        location.href = loginUri.replace(/;/, '');
       }
     })
     .catch(() => {

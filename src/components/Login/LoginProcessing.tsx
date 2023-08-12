@@ -9,8 +9,6 @@ import { REDIRECT_URI, SESSION_KEY_MEMBER_TOKEN } from '@constant/login';
 function LoginProcessing() {
   const [loginError, setLoginError] = useState<Error | null>(null);
 
-  const { location } = window;
-
   useEffect(() => {
     const code = location.search.split('&')[0].replace('?code=', '');
 
