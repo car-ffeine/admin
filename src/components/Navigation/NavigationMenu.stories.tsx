@@ -23,5 +23,9 @@ const meta = {
 export default meta;
 
 export const Default = () => {
-  return <NavigationMenu menus={MENU_LIST} />;
+  return (
+    <div style={{ background: '#0a5ed9' }}>
+      <NavigationMenu menus={MENU_LIST} />;
+    </div>
+  );
 };
