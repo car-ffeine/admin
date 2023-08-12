@@ -4,6 +4,8 @@
   box-sizing: border-box;
   font-family: 'Noto Sans KR', sans-serif !important;
 
+  scrollbar-width: none;
+
   &::-webkit-scrollbar {
     height: 7px;
   }
@@ -15,9 +17,5 @@
 
   &:has(.modal-open) {
     overflow: hidden;
-  }
-
-  & body {
-    padding: 32px;
   }
 }

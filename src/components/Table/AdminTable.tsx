@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import { Box } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableContainer from '@mui/material/TableContainer';
@@ -18,7 +19,7 @@ export interface TableProps {
 
 function AdminTable({ title }: TableProps) {
   return (
-    <>
+    <Box sx={{ margin: '32px' }}>
       <Title>{title}</Title>
       <TableContainer component={Paper} css={boxShadowCss}>
         <Table sx={{ minWidth: 500, overflowX: 'auto' }} aria-label="정보 표">
@@ -27,7 +28,7 @@ function AdminTable({ title }: TableProps) {
         </Table>
       </TableContainer>
       <AdminTablePagination />
-    </>
+    </Box>
   );
 }
 

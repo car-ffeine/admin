@@ -16,6 +16,11 @@ export interface StationProps {
   longitude: number;
 }
 
+export interface Menu {
+  name: string;
+  link: string;
+}
+
 export type StationCategoryKeys = keyof typeof STATION_DETAILS_CATEGORIES;
 export type StationCategoryValues = (typeof STATION_DETAILS_CATEGORIES)[StationCategoryKeys];
 
