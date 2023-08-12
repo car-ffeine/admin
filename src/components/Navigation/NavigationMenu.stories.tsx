@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import type { Meta } from '@storybook/react';
 
 import { NavigationMenu } from '@component/Navigation/NavigationMenu.tsx';
@@ -24,8 +25,12 @@ export default meta;
 
 export const Default = () => {
   return (
-    <div style={{ background: '#0a5ed9' }}>
+    <NavigationMenuContainer>
       <NavigationMenu menus={MENU_LIST} />;
-    </div>
+    </NavigationMenuContainer>
   );
 };
+
+const NavigationMenuContainer = styled.div`
+  background: #0a5ed9;
+`;
