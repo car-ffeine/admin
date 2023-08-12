@@ -3,9 +3,11 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 
-import { useSetExternalState } from '@util/external-state';
+import { modalActions } from '@store/modalStateStore';
 
-import { modalStateStore } from '@store/modalStateStore';
+import { stationEditMock } from '@mock';
+
+import Form from '@component/Form';
 
 import { ROWS_PER_PAGE } from '@constant';
 
@@ -13,10 +15,10 @@ import type { ModalElementsProps } from '@type';
 
 // TODO: 하드 코딩 없앨 것
 function AdminTableBody({ elements }: ModalElementsProps) {
-  const setIsModalOpen = useSetExternalState(modalStateStore);
+  const { openModal } = modalActions;
 
   const handleOpenModal = () => {
-    setIsModalOpen(true);
+    openModal(<Form element={stationEditMock} />);
   };
 
   const size = ROWS_PER_PAGE;

@@ -1,23 +1,18 @@
-import { useExternalState } from '@util/external-state';
+import { useExternalValue } from '@util/external-state';
 
-import { modalStateStore } from '@store/modalStateStore';
-
-import { stationEditMock } from '@mock';
+import { modalActions, modalContentStore, modalOpenStore } from '@store/modalStateStore';
 
 import Modal from '@common/Modal';
 
-import Form from './Form';
-
 function ModalContainer() {
-  const [isModalOpen, setIsModalOpen] = useExternalState(modalStateStore);
+  const isModalOpen = useExternalValue(modalOpenStore);
+  const content = useExternalValue(modalContentStore);
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
+  const { closeModal } = modalActions;
 
   return (
-    <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-      <Form element={stationEditMock} />
+    <Modal isOpen={isModalOpen} onClose={closeModal}>
+      <>{content}</>
     </Modal>
   );
 }

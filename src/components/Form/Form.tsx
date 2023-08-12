@@ -15,7 +15,7 @@ import { useSetExternalState } from '@util/external-state';
 import { getTypedObjectEntries } from '@util/getTypedObjectEntries';
 import { getTypedObjectFromEntries } from '@util/getTypedObjectFromEntries';
 
-import { modalStateStore } from '@store/modalStateStore';
+import { modalOpenStore } from '@store/modalStateStore';
 import { toastActions } from '@store/toastStore';
 
 import { lineClampCss } from '@style';
@@ -32,7 +32,7 @@ interface Props {
 function Form({ element }: Props) {
   const [inputs, setInputs] = useState(element);
 
-  const setIsModalOpen = useSetExternalState(modalStateStore);
+  const setIsModalOpen = useSetExternalState(modalOpenStore);
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
