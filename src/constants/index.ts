@@ -36,4 +36,8 @@ export const MENU_LIST = [
     name: '충전소 신고 관리',
     link: '#admin/fault-reports',
   },
+  {
+    name: '간편 로그인',
+    link: '',
+  },
 ];

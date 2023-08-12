@@ -3,6 +3,8 @@ import { AppBar, Box, Toolbar, Typography } from '@mui/material';
 
 import type { JSX } from 'react';
 
+import { ReactComponent as CarFfeineLogo } from '@asset/car-ffeine-white-logo.svg';
+
 export interface NavigationProps {
   title: string;
   children: JSX.Element;
@@ -13,7 +15,8 @@ function Navigation({ title, children }: NavigationProps) {
     <Box sx={{ display: 'flex' }}>
       <AppBar component="nav" css={headerCss}>
         <Toolbar>
-          <Typography variant="h6" component="div" css={headerTitleCss}>
+          <CarFfeineLogo width={24} height={24} />
+          <Typography variant="h6" component="h1" css={headerTitleCss}>
             {title}
           </Typography>
           {children}
@@ -24,13 +27,16 @@ function Navigation({ title, children }: NavigationProps) {
 }
 
 const headerTitleCss = css`
-  flex-grow: 1;
-  color: white;
   display: {
     xs: none;
     sm: block;
   }
+  flex-grow: 1;
+  margin-left: 4px;
+
+  color: white;
   font-weight: bold;
+  letter-spacing: -0.8px;
 `;
 
 const headerCss = css`
