@@ -8,8 +8,8 @@ import Select from '@mui/material/Select';
 import type { SelectChangeEvent } from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 
-import type { ChangeEvent } from 'react';
-import { useState, type FormEvent } from 'react';
+import type { FormEvent, ChangeEvent } from 'react';
+import { useState } from 'react';
 
 import { useSetExternalState } from '@util/external-state';
 import { getTypedObjectEntries } from '@util/getTypedObjectEntries';
@@ -23,7 +23,7 @@ import { lineClampCss } from '@style';
 import { STATION_DETAILS_CATEGORIES } from '@constant';
 
 import type { StationCategoryValuesWithoutID } from '@type';
-import { type StationEditProps } from '@type';
+import type { StationEditProps } from '@type';
 
 interface Props {
   element: StationEditProps;
