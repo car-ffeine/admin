@@ -20,7 +20,11 @@ export const NavigationMenu = ({ menus }: NavigationProps) => {
   };
 
   return menus.map((menu, index) => (
-    <Button key={index} sx={{ color: '#fff' }} onClick={() => handleClickMenu(menu)}>
+    <Button
+      key={index}
+      sx={{ color: '#fff', wordBreak: 'keep-all' }}
+      onClick={() => handleClickMenu(menu)}
+    >
       {menu}
     </Button>
   ));
