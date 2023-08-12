@@ -7,7 +7,12 @@
   scrollbar-width: none;
 
   &::-webkit-scrollbar {
-    display: none;
+    height: 7px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #457dd1;
+    border-radius: 8px;
   }
 
   &:has(.modal-open) {

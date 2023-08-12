@@ -5,13 +5,13 @@ import IconButton from '@mui/material/IconButton';
 
 import type { MouseEvent } from 'react';
 
-export interface ModalProps {
+interface Props {
   isOpen: boolean;
   onClose: () => void;
   children: JSX.Element;
 }
 
-const Modal = ({ isOpen, onClose, children }: ModalProps) => {
+const Modal = ({ isOpen, onClose, children }: Props) => {
   const handlePreventModalClose = (event: MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
   };
@@ -83,4 +83,9 @@ const ModalContent = styled.div`
 
   border-radius: 10px;
   overflow-y: auto;
+
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
