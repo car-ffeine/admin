@@ -22,7 +22,7 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <NavigationContainer title={'ADMIN'} menus={MENU_LIST} />
+        <NavigationContainer title="ADMIN" menus={MENU_LIST} />
         <AdminTable title="전체 충전소" />
         <ModalContainer />
       </ThemeProvider>
