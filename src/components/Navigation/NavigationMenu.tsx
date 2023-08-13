@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { getSessionStorage, setSessionStorage } from '@util/storage';
 
 import { modalActions } from '@store/modalStateStore';
+import { toastActions } from '@store/toastStore';
 
 import LoginModalContent from '@component/Login';
 
@@ -19,6 +20,7 @@ interface NavigationProps {
 export const NavigationMenu = ({ menus }: NavigationProps) => {
   const [memberToken, setMemberToken] = useState('');
   const { openModal } = modalActions;
+  const { showToast } = toastActions;
 
   useEffect(() => {
     const token = getSessionStorage(SESSION_KEY_MEMBER_TOKEN, '');
@@ -34,9 +36,14 @@ export const NavigationMenu = ({ menus }: NavigationProps) => {
     }
 
     if (menu === '간편 로그인' && isLoggedIn) {
-      setSessionStorage(SESSION_KEY_MEMBER_TOKEN, '');
-      setMemberToken('');
+      logout();
     }
+  };
+
+  const logout = () => {
+    setSessionStorage(SESSION_KEY_MEMBER_TOKEN, '');
+    setMemberToken('');
+    showToast('로그아웃 되었습니다', 'success');
   };
 
   return menus.map((menu, index) => (
