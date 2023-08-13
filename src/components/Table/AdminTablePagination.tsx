@@ -2,11 +2,11 @@ import { Pagination } from '@mui/material';
 
 import type { ChangeEvent } from 'react';
 
-import { LAST_PAGE } from '@constant';
+interface Props {
+  lastPage: number;
+}
 
-function AdminTablePagination() {
-  const lastPage = LAST_PAGE;
-
+function AdminTablePagination({ lastPage }: Props) {
   const handleChangePage = (_: ChangeEvent<unknown>, page: number) => {
     console.log(page, 'page');
   };

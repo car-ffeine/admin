@@ -11,24 +11,26 @@ import Form from '@component/Form';
 
 import { ROWS_PER_PAGE } from '@constant';
 
-import type { ModalElementsProps } from '@type';
+import type { StationProps } from '@type';
+
+interface Props {
+  elements: StationProps[];
+}
 
 // TODO: 하드 코딩 없앨 것
-function AdminTableBody({ elements }: ModalElementsProps) {
+function AdminTableBody({ elements }: Props) {
   const { openModal } = modalActions;
 
   const handleOpenModal = () => {
     openModal(<Form element={stationEditMock} />);
   };
 
-  const size = ROWS_PER_PAGE;
-
-  const emptyRows = size - Math.min(size, elements.length);
+  const emptyRows = ROWS_PER_PAGE - Math.min(ROWS_PER_PAGE, elements.length);
 
   return (
     <TableBody>
-      {elements.map((element, index) => (
-        <TableRow key={index}>
+      {elements.map((element) => (
+        <TableRow key={element.stationId}>
           <TableCell
             align="center"
             css={tableItemCommonCss}
@@ -78,10 +80,10 @@ function AdminTableBody({ elements }: ModalElementsProps) {
             {element.operationTime}
           </TableCell>
           <TableCell align="center" css={[tableItemSizeCss, tableItemCommonCss]}>
-            {element.privateReason}
+            {String(element.privateReason)}
           </TableCell>
           <TableCell align="center" css={[tableItemSizeCss, tableItemCommonCss]}>
-            {element.stationState}
+            {String(element.stationState)}
           </TableCell>
         </TableRow>
       ))}

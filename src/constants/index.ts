@@ -16,7 +16,7 @@ export const STATION_DETAILS_CATEGORIES = {
 
 export const STATION_DETAILS_CATEGORY_LIST = Object.values(STATION_DETAILS_CATEGORIES);
 
-export const ROWS_PER_PAGE = 5;
+export const ROWS_PER_PAGE = 10;
 export const LAST_PAGE = 12;
 
 export const MENU_LIST = [
