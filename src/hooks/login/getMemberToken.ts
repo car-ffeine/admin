@@ -21,7 +21,7 @@ export const getMemberToken = async (code: string) => {
     })
     .then(({ data }) => data);
 
-  const userToken = tokenResponse.token;
+  const memberToken = tokenResponse.token;
 
-  return userToken;
+  return memberToken;
 };
