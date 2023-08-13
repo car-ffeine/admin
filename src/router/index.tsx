@@ -10,7 +10,7 @@ export const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: '/admin/login',
+    path: '/login',
     element: <LoginProcessing />,
   },
 ]);

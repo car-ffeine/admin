@@ -10,13 +10,13 @@ function LoginProcessing() {
   const [loginError, setLoginError] = useState<Error | null>(null);
 
   useEffect(() => {
-    const code = location.search.split('&')[0].replace('?code=', '');
+    const code = new URLSearchParams(location.search).get('code') ?? '';
 
     getMemberToken(code)
       .then((token) => {
         setSessionStorage(SESSION_KEY_MEMBER_TOKEN, token);
 
-        location.href = REDIRECT_URI.replace('/admin/login', '');
+        location.href = REDIRECT_URI.replace('/login', '');
       })
       .catch(() => {
         setLoginError(new Error('로그인 중에 에러가 발생했습니다!'));
