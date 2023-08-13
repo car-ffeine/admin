@@ -1,14 +1,14 @@
 import type { Meta } from '@storybook/react';
 
-import Login from './Login';
+import Loading from './Loading';
 
 const meta = {
-  component: Login,
+  component: Loading,
   tags: ['autodocs'],
-} satisfies Meta<typeof Login>;
+} satisfies Meta<typeof Loading>;
 
 export default meta;
 
 export const Default = () => {
-  return <Login />;
+  return <Loading />;
 };

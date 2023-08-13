@@ -1,5 +1,4 @@
-import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
-import { koKR } from '@mui/material/locale';
+import { CssBaseline } from '@mui/material';
 import 'common.css';
 
 import ToastContainer from '@common/Toast/ToastContainer';
@@ -10,26 +9,14 @@ import AdminTable from '@component/Table';
 
 import { MENU_LIST } from '@constant';
 
-const theme = createTheme(
-  {
-    typography: {
-      fontFamily: 'Noto Sans KR, sans-serif',
-    },
-  },
-  koKR
-);
-
 function App() {
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <ModalContainer />
-        <ToastContainer />
-        <CssBaseline />
-        <NavigationContainer title="ADMIN" menus={MENU_LIST} />
-        <AdminTable title="전체 충전소" />
-        <ModalContainer />
-      </ThemeProvider>
+      <ToastContainer />
+      <ModalContainer />
+      <CssBaseline />
+      <NavigationContainer title="ADMIN" menus={MENU_LIST} />
+      <AdminTable title="전체 충전소" />
     </>
   );
 }

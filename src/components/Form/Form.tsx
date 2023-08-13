@@ -12,8 +12,8 @@ import type { FormEvent, ChangeEvent } from 'react';
 import { useState } from 'react';
 
 import { useSetExternalState } from '@util/external-state';
-import { getTypedObjectEntries } from '@util/getTypedObjectEntries';
-import { getTypedObjectFromEntries } from '@util/getTypedObjectFromEntries';
+import { getTypedObjectEntries } from '@util/typed-object/getTypedObjectEntries';
+import { getTypedObjectFromEntries } from '@util/typed-object/getTypedObjectFromEntries';
 
 import { modalOpenStore } from '@store/modalStateStore';
 import { toastActions } from '@store/toastStore';
