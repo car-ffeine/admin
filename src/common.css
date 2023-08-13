@@ -5,8 +5,10 @@
   font-family: 'Noto Sans KR', sans-serif !important;
 
   scrollbar-width: none;
+  word-break: keep-all;
 
   &::-webkit-scrollbar {
+    width: 0;
     height: 7px;
   }
 
