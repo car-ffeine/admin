@@ -13,8 +13,9 @@ function LoginProcessing() {
 
   useEffect(() => {
     const code = new URLSearchParams(location.search).get('code') ?? '';
+    const encodedCode = encodeURIComponent(code);
 
-    getMemberToken(code)
+    getMemberToken(encodedCode)
       .then((token) => {
         setSessionStorage(SESSION_KEY_MEMBER_TOKEN, token);
 
@@ -26,7 +27,7 @@ function LoginProcessing() {
   }, []);
 
   if (loginError !== null) {
-    return <p>{loginError.message}</p>;
+    return <></>;
   }
 
   return <Loading />;
