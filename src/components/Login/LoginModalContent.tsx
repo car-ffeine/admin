@@ -3,9 +3,11 @@ import styled from '@emotion/styled';
 import { ReactComponent as CarFfeineLogo } from '@asset/car-ffeine-logo.svg';
 import { ReactComponent as GoogleLogo } from '@asset/google-logo.svg';
 
-import { getLoginUri } from '@hook/login/getLoginUri';
+import { useLoginUri } from '@hook/login/useLoginUri';
 
 function LoginModalContent() {
+  const { getLoginUri } = useLoginUri();
+
   const handleLogin = () => {
     getLoginUri();
   };
