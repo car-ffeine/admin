@@ -2,9 +2,9 @@ import axios from 'axios';
 
 import { useEffect, useState } from 'react';
 
-import { setSessionStorage } from '@util/storage';
+import { tokenActions } from '@store/memberTokenStore';
 
-import { REDIRECT_URI, SESSION_KEY_MEMBER_TOKEN } from '@constant/login';
+import { REDIRECT_URI } from '@constant/login';
 import { LOGIN_BASE_URL } from '@constant/url';
 
 interface TokenResponse {
@@ -13,6 +13,7 @@ interface TokenResponse {
 
 export const useMemberToken = () => {
   const [loginError, setLoginError] = useState<Error | null>(null);
+  const { setToken } = tokenActions;
 
   useEffect(() => {
     const code = new URLSearchParams(location.search).get('code') ?? '';
@@ -20,7 +21,7 @@ export const useMemberToken = () => {
 
     getMemberToken(encodedCode)
       .then((token) => {
-        setSessionStorage(SESSION_KEY_MEMBER_TOKEN, token);
+        setToken(token);
 
         location.href = REDIRECT_URI.replace('/login', '');
       })
