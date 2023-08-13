@@ -6,6 +6,8 @@ import { getMemberToken } from '@hook/login/getMemberToken';
 
 import { REDIRECT_URI, SESSION_KEY_MEMBER_TOKEN } from '@constant/login';
 
+import Loading from './Loading';
+
 function LoginProcessing() {
   const [loginError, setLoginError] = useState<Error | null>(null);
 
@@ -27,7 +29,7 @@ function LoginProcessing() {
     return <p>{loginError.message}</p>;
   }
 
-  return <p>로그인 중...</p>;
+  return <Loading />;
 }
 
 export default LoginProcessing;
