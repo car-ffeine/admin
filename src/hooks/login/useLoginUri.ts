@@ -14,11 +14,13 @@ export const useLoginUri = () => {
 
   const getLoginUri = () => {
     axios
-      .get<LoginUriResponse>(`${LOGIN_BASE_URL}/oauth/google/login-uri?redirect-uri=${REDIRECT_URI}`)
+      .get<LoginUriResponse>(
+        `${LOGIN_BASE_URL}/oauth/google/login-uri?redirect-uri=${REDIRECT_URI}`
+      )
       .then(({ data }) => data)
       .then(({ loginUri }) => {
         if (loginUri !== undefined) {
-          location.href = loginUri.replace(/;/, '');
+          location.href = loginUri;
         }
       })
       .catch(() => {
