@@ -29,7 +29,7 @@ function AdminTableBody({ elements }: Props) {
             scope="row"
           >
             {element.stationId}
-            <ButtonContainer />
+            <ButtonContainer stationId={element.stationId} />
           </TableCell>
           <TableCell
             align="center"

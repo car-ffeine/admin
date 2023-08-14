@@ -1,12 +1,29 @@
 import styled from '@emotion/styled';
 
+import { modalActions } from '@store/modalStateStore';
+
+import { stationEditMock } from '@mock';
+
+import Form from '@component/Form';
+
 import DetailsButton from './DetailsButton';
 import EditButton from './EditButton';
 
-function ButtonContainer() {
+interface ButtonContainerProps {
+  stationId: string;
+}
+
+function ButtonContainer({ stationId }: ButtonContainerProps) {
+  const { openModal } = modalActions;
+
+  const handleEditTable = () => {
+    console.log(stationId);
+    openModal(<Form element={stationEditMock} />);
+  };
+
   return (
     <Container>
-      <EditButton />
+      <EditButton handleEditTable={handleEditTable} />
       <DetailsButton />
     </Container>
   );

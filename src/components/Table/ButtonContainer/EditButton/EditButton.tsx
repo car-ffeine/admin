@@ -1,20 +1,12 @@
 import { PencilSquareIcon } from '@heroicons/react/24/outline';
 
-import { modalActions } from '@store/modalStateStore';
-
-import { stationEditMock } from '@mock';
-
-import Form from '@component/Form';
-
 import { Button } from '../ButtonStyle';
 
-function EditButton() {
-  const { openModal } = modalActions;
+interface Props {
+  handleEditTable: () => void;
+}
 
-  const handleEditTable = () => {
-    openModal(<Form element={stationEditMock} />);
-  };
-
+function EditButton({ handleEditTable }: Props) {
   return (
     <Button type="button" aria-label="수정" onClick={handleEditTable}>
       <PencilSquareIcon width={24} />
