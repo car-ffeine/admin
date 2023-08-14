@@ -4,10 +4,6 @@ import { Box } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableContainer from '@mui/material/TableContainer';
-import { memberTokenStore } from '@store/memberTokenStore';
-
-import { useFetchStations } from '@hook/stations/useFetchStations';
-
 
 import type { ColumnType } from '@type';
 
@@ -19,15 +15,10 @@ export interface TableProps<T, K extends keyof T> {
   data: T[];
   columns: ColumnType<T, K>[];
   title: string;
+  lastPage: number;
 }
 
-function AdminTable<T, K extends keyof T>({ data, columns, title }: TableProps<T, K>) {
-  const token = memberTokenStore.getState();
-  // const [page, setPage] = useState(1);
-  const { lastPage, stationSummaryList } = useFetchStations(token, 1);
-
-  if (token === '') return <p>로그인이 필요합니다</p>;
-
+function AdminTable<T, K extends keyof T>({ data, columns, title, lastPage }: TableProps<T, K>) {
   return (
     <Box sx={{ margin: '32px' }}>
       <Title>{title}</Title>

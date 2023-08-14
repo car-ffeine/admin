@@ -5,16 +5,16 @@ import { useEffect, useState } from 'react';
 import { ROWS_PER_PAGE } from '@constant';
 import { BASE_URL } from '@constant/url';
 
-import type { StationProps } from '@type';
+import type { StationDetails } from '@type';
 
 interface StationsResponse {
   lastPage: number;
-  elements: StationProps[];
+  elements: StationDetails[];
 }
 
 export const useFetchStations = (token: string, page: number) => {
   const [lastPage, setLastPage] = useState(1);
-  const [stationSummaryList, setStationSummaryList] = useState<StationProps[]>([]);
+  const [stationSummaryList, setStationSummaryList] = useState<StationDetails[]>([]);
 
   const config = {
     headers: {
