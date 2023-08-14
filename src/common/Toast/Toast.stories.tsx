@@ -91,7 +91,6 @@ const S = {
     padding: 12px 24px;
     font-size: 15px;
     text-align: center;
-    word-break: keep-all;
     line-height: 1.5;
     border-radius: 28px;
     font-weight: 500;

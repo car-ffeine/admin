@@ -190,7 +190,6 @@ const ButtonContainer = styled.div`
   display: flex;
   justify-content: end;
   margin-top: 16px;
-  word-break: keep-all;
 
   &button {
     justify-content: end;

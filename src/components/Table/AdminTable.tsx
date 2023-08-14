@@ -5,7 +5,9 @@ import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableContainer from '@mui/material/TableContainer';
 
-import { elements } from '@mock';
+import { memberTokenStore } from '@store/memberTokenStore';
+
+import { useFetchStations } from '@hook/stations/useFetchStations';
 
 import { STATION_DETAILS_CATEGORY_LIST } from '@constant';
 
@@ -18,22 +20,29 @@ export interface TableProps {
 }
 
 function AdminTable({ title }: TableProps) {
+  const token = memberTokenStore.getState();
+  // const [page, setPage] = useState(1);
+  const { lastPage, stationSummaryList } = useFetchStations(token, 1);
+
+  if (token === '') return <p>로그인이 필요합니다</p>;
+
   return (
     <Box sx={{ margin: '32px' }}>
       <Title>{title}</Title>
       <TableContainer component={Paper} css={boxShadowCss}>
         <Table sx={{ minWidth: 500, overflowX: 'auto' }} aria-label="정보 표">
           <AdminTableHead categoryList={STATION_DETAILS_CATEGORY_LIST} />
-          <AdminTableBody elements={elements} />
+          <AdminTableBody elements={stationSummaryList} />
         </Table>
       </TableContainer>
-      <AdminTablePagination />
+      <AdminTablePagination lastPage={lastPage} />
     </Box>
   );
 }
 
 const Title = styled.h1`
-  margin-bottom: 36px;
+  margin-bottom: 24px;
+  padding-top: 8px;
   font-size: 19px;
   color: #333;
 `;

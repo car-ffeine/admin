@@ -1,9 +1,11 @@
 import { Button } from '@mui/material';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
+import { useExternalState } from '@util/external-state';
 import { getSessionStorage, setSessionStorage } from '@util/storage';
 
+import { memberTokenStore } from '@store/memberTokenStore';
 import { modalActions } from '@store/modalStateStore';
 import { toastActions } from '@store/toastStore';
 
@@ -18,7 +20,7 @@ interface NavigationProps {
 }
 
 export const NavigationMenu = ({ menus }: NavigationProps) => {
-  const [memberToken, setMemberToken] = useState('');
+  const [memberToken, setMemberToken] = useExternalState(memberTokenStore);
   const { openModal } = modalActions;
   const { showToast } = toastActions;
 

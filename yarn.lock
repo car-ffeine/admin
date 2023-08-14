@@ -2761,6 +2761,19 @@
     "@svgr/hast-util-to-babel-ast" "^7.0.0"
     "svg-parser" "^2.0.4"
 
+"@tanstack/query-core@4.32.6":
+  "integrity" "sha512-YVB+mVWENQwPyv+40qO7flMgKZ0uI41Ph7qXC2Zf1ft5AIGfnXnMZyifB2ghhZ27u+5wm5mlzO4Y6lwwadzxCA=="
+  "resolved" "https://registry.npmjs.org/@tanstack/query-core/-/query-core-4.32.6.tgz"
+  "version" "4.32.6"
+
+"@tanstack/react-query@^4.32.6":
+  "integrity" "sha512-AITu/IKJJJXsHHeXNBy5bclu12t08usMCY0vFC2dh9SP/w6JAk5U9GwfjOIPj3p+ATADZvxQPe8UiCtMLNeQbg=="
+  "resolved" "https://registry.npmjs.org/@tanstack/react-query/-/react-query-4.32.6.tgz"
+  "version" "4.32.6"
+  dependencies:
+    "@tanstack/query-core" "4.32.6"
+    "use-sync-external-store" "^1.2.0"
+
 "@testing-library/dom@^9.0.0", "@testing-library/dom@>=7.21.4":
   "integrity" "sha512-0DGPd9AR3+iDTjGoMpxIkAsUihHZ3Ai6CneU6bRRrffXMgzCdlNk43jTrD2/5LT6CBb3MWTP8v510JzYtahD2w=="
   "resolved" "https://registry.npmjs.org/@testing-library/dom/-/dom-9.3.1.tgz"
@@ -8070,6 +8083,11 @@
   dependencies:
     "detect-node-es" "^1.1.0"
     "tslib" "^2.0.0"
+
+"use-sync-external-store@^1.2.0":
+  "integrity" "sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA=="
+  "resolved" "https://registry.npmjs.org/use-sync-external-store/-/use-sync-external-store-1.2.0.tgz"
+  "version" "1.2.0"
 
 "util-deprecate@^1.0.1", "util-deprecate@^1.0.2", "util-deprecate@~1.0.1":
   "integrity" "sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw=="

@@ -11,28 +11,30 @@ import Form from '@component/Form';
 
 import { ROWS_PER_PAGE } from '@constant';
 
-import type { ModalElementsProps } from '@type';
+import type { StationProps } from '@type';
+
+interface Props {
+  elements: StationProps[];
+}
 
 // TODO: 하드 코딩 없앨 것
-function AdminTableBody({ elements }: ModalElementsProps) {
+function AdminTableBody({ elements }: Props) {
   const { openModal } = modalActions;
 
   const handleOpenModal = () => {
     openModal(<Form element={stationEditMock} />);
   };
 
-  const size = ROWS_PER_PAGE;
-
-  const emptyRows = size - Math.min(size, elements.length);
+  const emptyRows = ROWS_PER_PAGE - Math.min(ROWS_PER_PAGE, elements.length);
 
   return (
     <TableBody>
-      {elements.map((element, index) => (
-        <TableRow key={index}>
+      {elements.map((element) => (
+        <TableRow key={element.stationId}>
           <TableCell
             align="center"
             css={tableItemCommonCss}
-            sx={{ minWidth: 100, height: 40, cursor: 'pointer' }}
+            sx={{ minWidth: 140, height: 40, cursor: 'pointer' }}
             component="th"
             scope="row"
             onClick={handleOpenModal}
@@ -44,16 +46,15 @@ function AdminTableBody({ elements }: ModalElementsProps) {
           </TableCell>
           <TableCell
             align="center"
-            css={tableItemCommonCss}
-            sx={{ minWidth: 280, textAlign: 'center' }}
+            css={[tableItemSizeCss, tableItemCommonCss]}
+            sx={{ minWidth: 320 }}
           >
+            {element.stationName}
+          </TableCell>
+          <TableCell align="center" css={tableItemCommonCss} sx={{ minWidth: 320 }}>
             {element.address}
           </TableCell>
-          <TableCell
-            align="center"
-            css={tableItemCommonCss}
-            sx={{ minWidth: 280, textAlign: 'center' }}
-          >
+          <TableCell align="center" css={tableItemCommonCss} sx={{ minWidth: 280 }}>
             {element.detailLocation}
           </TableCell>
           <TableCell align="center" css={[tableItemSizeCss, tableItemCommonCss]}>
@@ -78,10 +79,10 @@ function AdminTableBody({ elements }: ModalElementsProps) {
             {element.operationTime}
           </TableCell>
           <TableCell align="center" css={[tableItemSizeCss, tableItemCommonCss]}>
-            {element.privateReason}
+            {String(element.privateReason)}
           </TableCell>
           <TableCell align="center" css={[tableItemSizeCss, tableItemCommonCss]}>
-            {element.stationState}
+            {String(element.stationState)}
           </TableCell>
         </TableRow>
       ))}
@@ -102,6 +103,7 @@ const tableItemSizeCss = css`
 
 const tableItemCommonCss = css`
   border-bottom: 0;
+  text-align: center;
 `;
 
 export default AdminTableBody;

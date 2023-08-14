@@ -25,7 +25,3 @@ type ExcludeID<T extends string> = T extends 'ID' ? never : T;
 export type StationCategoryValuesWithoutID = ExcludeID<StationCategoryValues>;
 
 export interface StationEditProps extends Omit<StationProps, 'stationId'> {}
-
-export interface ModalElementsProps {
-  elements: StationProps[];
-}
