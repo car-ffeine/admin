@@ -16,8 +16,8 @@ import AdminTableHead from './AdminTableHead';
 import AdminTablePagination from './AdminTablePagination';
 
 export interface TableProps<T, K extends keyof T> {
-  data: Array<T>;
-  columns: Array<ColumnType<T, K>>;
+  data: T[];
+  columns: ColumnType<T, K>[];
   title: string;
 }
 
