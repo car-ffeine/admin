@@ -34,7 +34,7 @@ function AdminTableBody({ elements }: Props) {
           <TableCell
             align="center"
             css={tableItemCommonCss}
-            sx={{ minWidth: 100, height: 40, cursor: 'pointer' }}
+            sx={{ minWidth: 140, height: 40, cursor: 'pointer' }}
             component="th"
             scope="row"
             onClick={handleOpenModal}
@@ -46,16 +46,15 @@ function AdminTableBody({ elements }: Props) {
           </TableCell>
           <TableCell
             align="center"
-            css={tableItemCommonCss}
-            sx={{ minWidth: 280, textAlign: 'center' }}
+            css={[tableItemSizeCss, tableItemCommonCss]}
+            sx={{ minWidth: 320 }}
           >
+            {element.stationName}
+          </TableCell>
+          <TableCell align="center" css={tableItemCommonCss} sx={{ minWidth: 320 }}>
             {element.address}
           </TableCell>
-          <TableCell
-            align="center"
-            css={tableItemCommonCss}
-            sx={{ minWidth: 280, textAlign: 'center' }}
-          >
+          <TableCell align="center" css={tableItemCommonCss} sx={{ minWidth: 280 }}>
             {element.detailLocation}
           </TableCell>
           <TableCell align="center" css={[tableItemSizeCss, tableItemCommonCss]}>
@@ -104,6 +103,7 @@ const tableItemSizeCss = css`
 
 const tableItemCommonCss = css`
   border-bottom: 0;
+  text-align: center;
 `;
 
 export default AdminTableBody;
