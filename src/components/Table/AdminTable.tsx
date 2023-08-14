@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { Box } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
@@ -13,7 +14,6 @@ import { STATION_DETAILS_CATEGORY_LIST } from '@constant';
 import AdminTableBody from './AdminTableBody';
 import AdminTableHead from './AdminTableHead';
 import AdminTablePagination from './AdminTablePagination';
-import AdminTableTitle from './AdminTableTitle';
 
 export interface TableProps {
   title: string;
@@ -28,7 +28,7 @@ function AdminTable({ title }: TableProps) {
 
   return (
     <Box sx={{ margin: '32px' }}>
-      <AdminTableTitle title={title} />
+      <Title tabIndex={0}>{title}</Title>
       <TableContainer component={Paper} css={boxShadowCss}>
         <Table tabIndex={0} sx={{ minWidth: 500, overflowX: 'auto' }} aria-label={`${title} 정보`}>
           <AdminTableHead categoryList={STATION_DETAILS_CATEGORY_LIST} />
@@ -39,6 +39,12 @@ function AdminTable({ title }: TableProps) {
     </Box>
   );
 }
+
+const Title = styled.h2`
+  margin: 16px 0 24px;
+  font-size: 19px;
+  color: #333;
+`;
 
 const boxShadowCss = css`
   box-shadow:
