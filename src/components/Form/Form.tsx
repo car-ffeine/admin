@@ -16,6 +16,7 @@ import { getTypedObjectEntries } from '@util/typed-object/getTypedObjectEntries'
 import { getTypedObjectFromEntries } from '@util/typed-object/getTypedObjectFromEntries';
 
 import { modalOpenStore } from '@store/modalStateStore';
+import { editedStationSummaryStore } from '@store/stationSummaryListStore';
 import { toastActions } from '@store/toastStore';
 
 import { lineClampCss } from '@style';
@@ -33,6 +34,7 @@ function Form({ element }: Props) {
   const [inputs, setInputs] = useState(element);
 
   const setIsModalOpen = useSetExternalState(modalOpenStore);
+  const setEditedStationSummary = useSetExternalState(editedStationSummaryStore);
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
@@ -69,6 +71,7 @@ function Form({ element }: Props) {
       return showToast('변경사항이 없습니다', 'error');
     }
 
+    setEditedStationSummary(formData);
     handleCloseModal();
   };
 

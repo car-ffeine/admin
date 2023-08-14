@@ -5,12 +5,12 @@ import TableRow from '@mui/material/TableRow';
 
 import { ROWS_PER_PAGE } from '@constant';
 
-import type { StationProps } from '@type';
+import type { StationSummary } from '@type';
 
 import ButtonContainer from './ButtonContainer';
 
 interface Props {
-  elements: StationProps[];
+  elements: StationSummary[];
 }
 
 // TODO: 하드 코딩 없앨 것

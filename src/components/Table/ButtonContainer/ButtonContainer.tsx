@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 
 import { modalActions } from '@store/modalStateStore';
-
-import { stationEditMock } from '@mock';
+import { findSelectedStationSummary } from '@store/stationSummaryListStore';
+import { toastActions } from '@store/toastStore';
 
 import Form from '@component/Form';
 
@@ -15,10 +15,17 @@ interface ButtonContainerProps {
 
 function ButtonContainer({ stationId }: ButtonContainerProps) {
   const { openModal } = modalActions;
+  const { showToast } = toastActions;
+  const stationSummary = findSelectedStationSummary(stationId);
 
   const handleEditTable = () => {
-    console.log(stationId);
-    openModal(<Form element={stationEditMock} />);
+    if (stationSummary === undefined) {
+      showToast('해당 충전소 정보를 찾을 수 없습니다', 'error');
+
+      return;
+    }
+
+    openModal(<Form element={stationSummary} />);
   };
 
   return (
