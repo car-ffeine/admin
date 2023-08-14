@@ -3,25 +3,25 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
-import type { StationCategoryValues } from '@type';
+import type { ColumnType } from '@type';
 
-interface Props {
-  categoryList: readonly StationCategoryValues[];
+interface TableHeaderProps<T, K extends keyof T> {
+  columns: Array<ColumnType<T, K>>;
 }
 
-function AdminTableHead({ categoryList }: Props) {
+const AdminTableHead = <T, K extends keyof T>({ columns }: TableHeaderProps<T, K>) => {
   return (
     <TableHead css={tableHeadCss}>
       <TableRow>
-        {categoryList.map((category, index) => (
+        {columns.map((category, index) => (
           <TableCell key={index} align="center" css={tableHeadItemsCss}>
-            {category}
+            {category.header}
           </TableCell>
         ))}
       </TableRow>
     </TableHead>
   );
-}
+};
 
 const tableHeadCss = css`
   white-space: pre;

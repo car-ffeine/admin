@@ -31,6 +31,7 @@ const headerTitleCss = css`
     xs: none;
     sm: block;
   }
+
   flex-grow: 1;
   margin-left: 4px;
 

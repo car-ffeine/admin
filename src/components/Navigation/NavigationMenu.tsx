@@ -17,9 +17,10 @@ import type { Menu } from '@type';
 
 interface NavigationProps {
   menus: readonly Menu[];
+  onClick: (title: string) => void;
 }
 
-export const NavigationMenu = ({ menus }: NavigationProps) => {
+export const NavigationMenu = ({ menus, onClick }: NavigationProps) => {
   const [memberToken, setMemberToken] = useExternalState(memberTokenStore);
   const { openModal } = modalActions;
   const { showToast } = toastActions;
@@ -32,12 +33,11 @@ export const NavigationMenu = ({ menus }: NavigationProps) => {
 
   const isLoggedIn = memberToken !== '';
 
-  const handleClickMenu = (menu: Menu) => {
-    if (menu === '간편 로그인' && !isLoggedIn) {
+  const handleClickMenu = () => {
+    if (!isLoggedIn) {
       openModal(<LoginModalContent />, 500);
     }
-
-    if (menu === '간편 로그인' && isLoggedIn) {
+    if (isLoggedIn) {
       logout();
     }
   };
@@ -48,13 +48,16 @@ export const NavigationMenu = ({ menus }: NavigationProps) => {
     showToast('로그아웃 되었습니다', 'success');
   };
 
-  return menus.map((menu, index) => (
-    <Button
-      key={index}
-      sx={{ color: '#fff', wordBreak: 'keep-all' }}
-      onClick={() => handleClickMenu(menu)}
-    >
-      {menu === '간편 로그인' && isLoggedIn ? '로그아웃' : menu}
-    </Button>
-  ));
+  return (
+    <>
+      {menus.map((menu, index) => (
+        <Button key={index} sx={{ color: '#fff' }} onClick={() => onClick(menu)}>
+          {menu}
+        </Button>
+      ))}
+      <Button sx={{ color: '#fff', wordBreak: 'keep-all' }} onClick={() => handleClickMenu()}>
+        {isLoggedIn ? '로그아웃' : '간편로그인'}
+      </Button>{' '}
+    </>
+  );
 };
