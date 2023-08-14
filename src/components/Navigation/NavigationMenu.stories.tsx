@@ -26,7 +26,7 @@ export default meta;
 export const Default = () => {
   return (
     <NavigationMenuContainer>
-      <NavigationMenu menus={MENU_LIST} />
+      <NavigationMenu menus={MENU_LIST} onClick={alert} />
     </NavigationMenuContainer>
   );
 };
