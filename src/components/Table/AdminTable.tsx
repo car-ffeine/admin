@@ -4,22 +4,24 @@ import { Box } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableContainer from '@mui/material/TableContainer';
-
 import { memberTokenStore } from '@store/memberTokenStore';
 
 import { useFetchStations } from '@hook/stations/useFetchStations';
 
-import { STATION_DETAILS_CATEGORY_LIST } from '@constant';
+
+import type { ColumnType } from '@type';
 
 import AdminTableBody from './AdminTableBody';
 import AdminTableHead from './AdminTableHead';
 import AdminTablePagination from './AdminTablePagination';
 
-export interface TableProps {
+export interface TableProps<T, K extends keyof T> {
+  data: Array<T>;
+  columns: Array<ColumnType<T, K>>;
   title: string;
 }
 
-function AdminTable({ title }: TableProps) {
+function AdminTable<T, K extends keyof T>({ data, columns, title }: TableProps<T, K>) {
   const token = memberTokenStore.getState();
   // const [page, setPage] = useState(1);
   const { lastPage, stationSummaryList } = useFetchStations(token, 1);
@@ -31,8 +33,8 @@ function AdminTable({ title }: TableProps) {
       <Title>{title}</Title>
       <TableContainer component={Paper} css={boxShadowCss}>
         <Table sx={{ minWidth: 500, overflowX: 'auto' }} aria-label="정보 표">
-          <AdminTableHead categoryList={STATION_DETAILS_CATEGORY_LIST} />
-          <AdminTableBody elements={stationSummaryList} />
+          <AdminTableHead columns={columns} />
+          <AdminTableBody data={data} columns={columns} />
         </Table>
       </TableContainer>
       <AdminTablePagination lastPage={lastPage} />

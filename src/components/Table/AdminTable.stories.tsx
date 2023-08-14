@@ -1,5 +1,9 @@
 import type { Meta } from '@storybook/react';
 
+import { stationMockData } from '@mock';
+
+import { stationColumns } from '@type';
+
 import type { TableProps } from './AdminTable';
 import AdminTable from './AdminTable';
 
@@ -8,6 +12,8 @@ const meta = {
   tags: ['autodocs'],
   args: {
     title: '전체 충전소',
+    columns: stationColumns,
+    data: stationMockData,
   },
   argTypes: {
     title: {
@@ -18,6 +24,6 @@ const meta = {
 
 export default meta;
 
-export const Default = (args: TableProps) => {
+export const Default = <T, K extends keyof T>(args: TableProps<T, K>) => {
   return <AdminTable {...args} />;
 };
