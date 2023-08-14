@@ -17,8 +17,8 @@ function EditButton() {
 
   return (
     <Button type="button" aria-label="수정" onClick={handleEditTable}>
-      <span>수정</span>
       <PencilSquareIcon width={24} />
+      <span>수정</span>
     </Button>
   );
 }

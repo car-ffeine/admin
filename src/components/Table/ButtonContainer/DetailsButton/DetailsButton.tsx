@@ -1,4 +1,4 @@
-import { EllipsisVerticalIcon } from '@heroicons/react/24/solid';
+import { DocumentTextIcon } from '@heroicons/react/24/outline';
 
 import { modalActions } from '@store/modalStateStore';
 
@@ -14,8 +14,8 @@ function DetailsButton() {
 
   return (
     <Button type="button" aria-label="상세보기" onClick={handleShowDetails}>
-      <span>상세보기</span>
-      <EllipsisVerticalIcon width={24} />
+      <DocumentTextIcon width={24} />
+      <span>상세</span>
     </Button>
   );
 }

@@ -7,6 +7,8 @@ import { ROWS_PER_PAGE } from '@constant';
 
 import type { StationProps } from '@type';
 
+import ButtonContainer from './ButtonContainer';
+
 interface Props {
   elements: StationProps[];
 }
@@ -22,14 +24,12 @@ function AdminTableBody({ elements }: Props) {
           <TableCell
             align="center"
             css={tableItemCommonCss}
-            sx={{ minWidth: 140, height: 40 }}
+            sx={{ minWidth: 140, fontWeight: 600 }}
             component="th"
             scope="row"
           >
             {element.stationId}
-          </TableCell>
-          <TableCell align="center" css={[tableItemSizeCss, tableItemCommonCss]}>
-            {element.stationName}
+            <ButtonContainer />
           </TableCell>
           <TableCell
             align="center"

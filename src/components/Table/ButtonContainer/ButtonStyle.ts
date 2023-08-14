@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const Button = styled.button`
   display: flex;
   align-items: center;
-  column-gap: 8px;
+  column-gap: 6px;
   margin-right: 12px;
   &:last-child {
     margin-right: 0;

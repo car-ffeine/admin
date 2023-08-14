@@ -14,6 +14,7 @@ function ButtonContainer() {
 
 const Container = styled.div`
   display: flex;
+  margin: 12px 0;
 `;
 
 export default ButtonContainer;
