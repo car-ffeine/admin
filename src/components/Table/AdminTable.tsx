@@ -24,8 +24,6 @@ function AdminTable({ title }: TableProps) {
   // const [page, setPage] = useState(1);
   const { lastPage, stationSummaryList } = useFetchStations(token, 1);
 
-  if (token === '') return <p>로그인이 필요합니다</p>;
-
   return (
     <Box sx={{ margin: '32px' }}>
       <Title tabIndex={0}>{title}</Title>
