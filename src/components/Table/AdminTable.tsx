@@ -5,11 +5,15 @@ import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableContainer from '@mui/material/TableContainer';
 
-import { memberTokenStore } from '@store/memberTokenStore';
+import { useSetExternalState } from '@util/external-state';
 
-import { useFetchStations } from '@hook/stations/useFetchStations';
+import { stationSummaryListStore } from '@store/stationSummaryListStore';
+
+import { useFetchStationsSummary } from '@hook/stations/useFetchStationsSummary';
 
 import { STATION_SUMMARY_CATEGORY_LIST } from '@constant';
+
+import type { StationSummary } from '@type';
 
 import AdminTableBody from './AdminTableBody';
 import AdminTableHead from './AdminTableHead';
@@ -20,9 +24,13 @@ export interface TableProps {
 }
 
 function AdminTable({ title }: TableProps) {
-  const token = memberTokenStore.getState();
-  // const [page, setPage] = useState(1);
-  const { lastPage, stationSummaryList } = useFetchStations(token, 1);
+  const {
+    data: { lastPage, stationSummaryList },
+  } = useFetchStationsSummary();
+
+  const setStationSummaryList = useSetExternalState<StationSummary[]>(stationSummaryListStore);
+
+  setStationSummaryList(stationSummaryList);
 
   return (
     <Box sx={{ margin: '32px' }}>

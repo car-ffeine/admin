@@ -81,7 +81,7 @@ function Form({ element }: FormProps) {
     const editedFormData = getTypedObjectFromEntries([...formData]);
     const originalValuesWithoutId = getTypedObjectEntries(element)
       .filter(([key]) => key !== 'stationId')
-      .map(([_, value]) => value);
+      .map(([_, value]) => value ?? '');
     const formValues = Object.values(editedFormData).map((value) => convertValue(value));
 
     return JSON.stringify(originalValuesWithoutId) === JSON.stringify(formValues);
@@ -121,7 +121,7 @@ function Form({ element }: FormProps) {
                   label={STATION_SUMMARY_CATEGORIES[key]}
                   variant="outlined"
                   css={labelCss}
-                  value={inputs[key]}
+                  value={inputs[key] ?? ''}
                   onChange={handleChangeInput}
                 />
               ) : (

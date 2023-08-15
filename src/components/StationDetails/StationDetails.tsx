@@ -31,7 +31,7 @@ function StationDetails({ stationId }: StationDetailsProps) {
       <h4>{STATION_DETAILS_CATEGORIES['chargers']}</h4>
       <ChargerContainer>
         {details['chargers'].map((charger) => {
-          return <ChargerCard {...charger} />;
+          return <ChargerCard key={charger.chargerId} {...charger} />;
         })}
       </ChargerContainer>
     </Container>
