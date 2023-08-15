@@ -11,12 +11,21 @@ function Error() {
     navigate('/');
   };
 
+  const handleReload = () => {
+    location.reload();
+  };
+
   return (
     <Container>
       <ErrorImage width={400} />
-      <Button type="button" onClick={handleGoHome}>
-        홈으로 가기
-      </Button>
+      <div>
+        <Button type="button" onClick={handleGoHome}>
+          홈으로 가기
+        </Button>
+        <Button type="button" onClick={handleReload}>
+          새로 고침
+        </Button>
+      </div>
     </Container>
   );
 }
@@ -31,8 +40,12 @@ const Container = styled.main`
 `;
 
 const Button = styled.button`
-  margin-top: 16px;
-  padding: 12px 44px;
+  width: 234px;
+  margin: 16px 16px 0 0;
+  &:last-child {
+    margin-right: 0;
+  }
+  padding: 12px 0;
   font-size: 28px;
   font-weight: 600;
   text-align: center;

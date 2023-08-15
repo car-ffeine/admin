@@ -44,7 +44,7 @@ const S = {
     position: fixed;
     width: max-content;
     max-width: 400px;
-    z-index: 99999;
+    z-index: 999999;
     padding: 12px 24px;
     font-size: 15px;
     text-align: center;
