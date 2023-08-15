@@ -82,7 +82,7 @@ function Form({ element }: FormProps) {
 
   const compareFormDataToObject = (formData: FormData) => {
     const editedFormData = getTypedObjectFromEntries([...formData]);
-    const originalValuesWithoutId = Object.entries(element)
+    const originalValuesWithoutId = getTypedObjectEntries(element)
       .filter(([key]) => key !== 'stationId')
       .map(([_, value]) => value);
     const formValues = Object.values(editedFormData).map((value) => convertValue(value));
