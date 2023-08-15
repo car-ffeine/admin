@@ -1,15 +1,6 @@
 import styled from '@emotion/styled';
-import { CssBaseline } from '@mui/material';
-import { ErrorBoundary } from '@suspensive/react';
-import 'common.css';
-
-import { Suspense } from 'react';
 
 import { memberTokenStore } from '@store/memberTokenStore';
-
-import Error from '@common/Error';
-import Loading from '@common/Loading';
-import ToastContainer from '@common/Toast/ToastContainer';
 
 import LoginModalContent from '@component/Login';
 import ModalContainer from '@component/ModalContainer';
@@ -24,22 +15,17 @@ function App() {
   if (token === '') {
     return (
       <PageBeforeLogin>
-        <ToastContainer />
         <LoginModalContent />
       </PageBeforeLogin>
     );
   }
 
   return (
-    <ErrorBoundary fallback={<Error />}>
-      <Suspense fallback={<Loading />}>
-        <ToastContainer />
-        <ModalContainer />
-        <CssBaseline />
-        <NavigationContainer title="ADMIN" menus={MENU_LIST} />
-        <AdminTable title="전체 충전소" />
-      </Suspense>
-    </ErrorBoundary>
+    <>
+      <ModalContainer />
+      <NavigationContainer title="ADMIN" menus={MENU_LIST} />
+      <AdminTable title="전체 충전소" />
+    </>
   );
 }
 

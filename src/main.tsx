@@ -1,13 +1,19 @@
-import { ThemeProvider, createTheme } from '@mui/material';
+import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import { koKR } from '@mui/material/locale';
+import { ErrorBoundary, Suspense } from '@suspensive/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import 'common.css';
 
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
 
 import { router } from '@router';
+
+import Error from '@common/Error';
+import Loading from '@common/Loading';
+import ToastContainer from '@common/Toast/ToastContainer';
 
 const theme = createTheme(
   {
@@ -24,8 +30,14 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ThemeProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
-        <ReactQueryDevtools initialIsOpen={true} />
+        <ErrorBoundary fallback={<Error />}>
+          <Suspense fallback={<Loading />}>
+            <CssBaseline />
+            <ToastContainer />
+            <RouterProvider router={router} />
+            <ReactQueryDevtools initialIsOpen={true} />
+          </Suspense>
+        </ErrorBoundary>
       </QueryClientProvider>
     </ThemeProvider>
   </StrictMode>
