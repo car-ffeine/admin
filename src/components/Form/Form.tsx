@@ -19,6 +19,8 @@ import { modalOpenStore } from '@store/modalStateStore';
 import { editedStationSummaryStore } from '@store/stationSummaryListStore';
 import { toastActions } from '@store/toastStore';
 
+import { useRequestStationEdit } from '@hook/stations/useRequestStationEdit';
+
 import { lineClampCss } from '@style';
 
 import { STATION_DETAILS_CATEGORIES } from '@constant';
@@ -34,6 +36,7 @@ function Form({ element }: Props) {
 
   const setIsModalOpen = useSetExternalState(modalOpenStore);
   const setEditedStationSummary = useSetExternalState(editedStationSummaryStore);
+  const { requestEdit } = useRequestStationEdit();
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
@@ -73,6 +76,7 @@ function Form({ element }: Props) {
     }
 
     setEditedStationSummary(formData);
+    requestEdit(element.stationId);
     handleCloseModal();
   };
 
