@@ -1,5 +1,9 @@
 import type { MENU_LIST, STATION_DETAILS_CATEGORIES } from '@constant';
 
+export interface StationDetails extends StationSummary {
+  chargers: Charger[];
+}
+
 export interface StationSummary {
   stationId: string;
   stationName: string;
@@ -14,6 +18,14 @@ export interface StationSummary {
   address: string | null;
   latitude: number;
   longitude: number;
+}
+
+export interface Charger {
+  chargerId: string;
+  type: string;
+  price: number;
+  capacity: number;
+  method: '단독' | '동시' | null;
 }
 
 export type Menu = (typeof MENU_LIST)[number];

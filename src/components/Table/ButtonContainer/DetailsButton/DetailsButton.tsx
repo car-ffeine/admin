@@ -2,14 +2,15 @@ import { DocumentTextIcon } from '@heroicons/react/24/outline';
 
 import { modalActions } from '@store/modalStateStore';
 
+import StationDetails from '@component/StationDetails';
+
 import { Button } from '../ButtonStyle';
 
 function DetailsButton() {
   const { openModal } = modalActions;
 
   const handleShowDetails = () => {
-    // TODO: 상세보기 컴포넌트 넣기
-    openModal('');
+    openModal(<StationDetails />);
   };
 
   return (
