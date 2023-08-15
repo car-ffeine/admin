@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import type { Meta } from '@storybook/react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import { elements } from '@mock';
 
@@ -22,10 +23,14 @@ const meta = {
 export default meta;
 
 export const Default = ({ element }: FormProps) => {
+  const queryClient = new QueryClient();
+
   return (
-    <Container>
-      <Form element={element} />
-    </Container>
+    <QueryClientProvider client={queryClient}>
+      <Container>
+        <Form element={element} />
+      </Container>
+    </QueryClientProvider>
   );
 };
 
