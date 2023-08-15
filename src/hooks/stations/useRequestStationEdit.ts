@@ -11,7 +11,7 @@ export const useRequestStationEdit = () => {
   const { showToast } = toastActions;
   const editedStationSummary = editedStationSummaryStore.getState();
 
-  const config = {
+  const headers = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -19,7 +19,7 @@ export const useRequestStationEdit = () => {
 
   const requestEdit = (stationId: string) => {
     axios
-      .patch(`${BASE_URL}/stations/${stationId}`, editedStationSummary, config)
+      .patch(`${BASE_URL}/stations/${stationId}`, editedStationSummary, headers)
       .then(() => {
         showToast('수정되었습니다');
       })

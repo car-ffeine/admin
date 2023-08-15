@@ -21,7 +21,7 @@ export const useFetchStations = (token: string, page: number) => {
   const [stationSummaryList, setStationSummaryList] =
     useExternalState<StationSummary[]>(stationSummaryListStore);
 
-  const config = {
+  const headers = {
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ export const useFetchStations = (token: string, page: number) => {
           data: { lastPage, elements: stationSummaryList },
         } = await axios.get<StationsResponse>(
           `${BASE_URL}/stations?page=${page}&size=${ROWS_PER_PAGE}`,
-          config
+          headers
         );
 
         setLastPage(lastPage);
