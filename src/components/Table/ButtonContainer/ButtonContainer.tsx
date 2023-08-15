@@ -9,7 +9,7 @@ import Form from '@component/Form';
 import DetailsButton from './DetailsButton';
 import EditButton from './EditButton';
 
-interface ButtonContainerProps {
+export interface ButtonContainerProps {
   stationId: string;
 }
 
