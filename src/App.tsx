@@ -1,6 +1,9 @@
 import styled from '@emotion/styled';
+import { ErrorBoundary } from '@suspensive/react';
 
 import { memberTokenStore } from '@store/memberTokenStore';
+
+import Error from '@common/Error';
 
 import LoginModalContent from '@component/Login';
 import ModalContainer from '@component/ModalContainer';
@@ -14,18 +17,20 @@ function App() {
 
   if (token === '') {
     return (
-      <PageBeforeLogin>
-        <LoginModalContent />
-      </PageBeforeLogin>
+      <ErrorBoundary fallback={<Error />}>
+        <PageBeforeLogin>
+          <LoginModalContent />
+        </PageBeforeLogin>
+      </ErrorBoundary>
     );
   }
 
   return (
-    <>
+    <ErrorBoundary fallback={<Error />}>
       <ModalContainer />
       <NavigationContainer title="ADMIN" menus={MENU_LIST} />
       <AdminTable title="전체 충전소" />
-    </>
+    </ErrorBoundary>
   );
 }
 
