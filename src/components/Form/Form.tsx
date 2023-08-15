@@ -23,7 +23,7 @@ import { useRequestStationEdit } from '@hook/stations/useRequestStationEdit';
 
 import { lineClampCss } from '@style';
 
-import { STATION_DETAILS_CATEGORIES } from '@constant';
+import { STATION_SUMMARY_CATEGORIES } from '@constant';
 
 import type { StationSummary } from '@type';
 
@@ -121,7 +121,7 @@ function Form({ element }: FormProps) {
                 <TextField
                   name={key}
                   type="text"
-                  label={STATION_DETAILS_CATEGORIES[key]}
+                  label={STATION_SUMMARY_CATEGORIES[key]}
                   variant="outlined"
                   css={labelCss}
                   value={inputs[key]}
@@ -130,13 +130,13 @@ function Form({ element }: FormProps) {
               ) : (
                 <FormControl fullWidth>
                   <InputLabel id={`select-label-${key}`}>
-                    {STATION_DETAILS_CATEGORIES[key]}
+                    {STATION_SUMMARY_CATEGORIES[key]}
                   </InputLabel>
                   <Select
                     labelId={`select-label-${key}`}
                     id={`select-${key}`}
                     name={key}
-                    label={STATION_DETAILS_CATEGORIES[key]}
+                    label={STATION_SUMMARY_CATEGORIES[key]}
                     value={String(inputs[key])}
                     onChange={handleChangeSelect}
                   >
