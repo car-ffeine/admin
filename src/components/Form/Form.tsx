@@ -16,7 +16,6 @@ import { getTypedObjectEntries } from '@util/typed-object/getTypedObjectEntries'
 import { getTypedObjectFromEntries } from '@util/typed-object/getTypedObjectFromEntries';
 
 import { modalOpenStore } from '@store/modalStateStore';
-import { editedStationSummaryStore } from '@store/stationSummaryListStore';
 import { toastActions } from '@store/toastStore';
 
 import { useRequestStationEdit } from '@hook/stations/useRequestStationEdit';
@@ -35,7 +34,6 @@ function Form({ element }: FormProps) {
   const [inputs, setInputs] = useState(element);
 
   const setIsModalOpen = useSetExternalState(modalOpenStore);
-  const setEditedStationSummary = useSetExternalState(editedStationSummaryStore);
   const { requestEdit } = useRequestStationEdit();
 
   const handleCloseModal = () => {
@@ -75,8 +73,7 @@ function Form({ element }: FormProps) {
       return;
     }
 
-    setEditedStationSummary(formData);
-    requestEdit(element.stationId);
+    requestEdit(element.stationId, formData);
     handleCloseModal();
   };
 
