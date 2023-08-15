@@ -16,23 +16,27 @@ import { getTypedObjectEntries } from '@util/typed-object/getTypedObjectEntries'
 import { getTypedObjectFromEntries } from '@util/typed-object/getTypedObjectFromEntries';
 
 import { modalOpenStore } from '@store/modalStateStore';
+import { editedStationSummaryStore } from '@store/stationSummaryListStore';
 import { toastActions } from '@store/toastStore';
+
+import { useRequestStationEdit } from '@hook/stations/useRequestStationEdit';
 
 import { lineClampCss } from '@style';
 
 import { STATION_DETAILS_CATEGORIES } from '@constant';
 
-import type { StationCategoryValuesWithoutID } from '@type';
-import type { StationEditProps } from '@type';
+import type { StationSummary } from '@type';
 
-interface Props {
-  element: StationEditProps;
+export interface FormProps {
+  element: StationSummary;
 }
 
-function Form({ element }: Props) {
+function Form({ element }: FormProps) {
   const [inputs, setInputs] = useState(element);
 
   const setIsModalOpen = useSetExternalState(modalOpenStore);
+  const setEditedStationSummary = useSetExternalState(editedStationSummaryStore);
+  const { requestEdit } = useRequestStationEdit();
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
@@ -66,18 +70,24 @@ function Form({ element }: Props) {
     const areValuesEqual = compareFormDataToObject(formData);
 
     if (areValuesEqual) {
-      return showToast('변경사항이 없습니다', 'error');
+      showToast('변경사항이 없습니다', 'error');
+
+      return;
     }
 
+    setEditedStationSummary(formData);
+    requestEdit(element.stationId);
     handleCloseModal();
   };
 
   const compareFormDataToObject = (formData: FormData) => {
     const editedFormData = getTypedObjectFromEntries([...formData]);
-    const originalValues: StationCategoryValuesWithoutID[] = Object.values(element);
+    const originalValuesWithoutId = Object.entries(element)
+      .filter(([key]) => key !== 'stationId')
+      .map(([_, value]) => value);
     const formValues = Object.values(editedFormData).map((value) => convertValue(value));
 
-    return JSON.stringify(originalValues) === JSON.stringify(formValues);
+    return JSON.stringify(originalValuesWithoutId) === JSON.stringify(formValues);
   };
 
   const convertValue = (value: string | FormDataEntryValue) => {
@@ -101,8 +111,12 @@ function Form({ element }: Props) {
       <Title>충전소 정보 수정</Title>
       <Fieldset>
         {getTypedObjectEntries(element).map(([key, value]) => {
+          if (key === 'stationId') {
+            return null;
+          }
+
           return (
-            <div key={key}>
+            <div key={`station-edit-form-${key}`}>
               {typeof value !== 'boolean' ? (
                 <TextField
                   name={key}
@@ -115,10 +129,12 @@ function Form({ element }: Props) {
                 />
               ) : (
                 <FormControl fullWidth>
-                  <InputLabel id="select-label">{STATION_DETAILS_CATEGORIES[key]}</InputLabel>
+                  <InputLabel id={`select-label-${key}`}>
+                    {STATION_DETAILS_CATEGORIES[key]}
+                  </InputLabel>
                   <Select
-                    labelId="select-label"
-                    id="select"
+                    labelId={`select-label-${key}`}
+                    id={`select-${key}`}
                     name={key}
                     label={STATION_DETAILS_CATEGORIES[key]}
                     value={String(inputs[key])}

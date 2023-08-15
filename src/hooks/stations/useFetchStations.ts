@@ -2,21 +2,26 @@ import axios from 'axios';
 
 import { useEffect, useState } from 'react';
 
+import { useExternalState } from '@util/external-state';
+
+import { stationSummaryListStore } from '@store/stationSummaryListStore';
+
 import { ROWS_PER_PAGE } from '@constant';
 import { BASE_URL } from '@constant/url';
 
-import type { StationProps } from '@type';
+import type { StationSummary } from '@type';
 
 interface StationsResponse {
   lastPage: number;
-  elements: StationProps[];
+  elements: StationSummary[];
 }
 
 export const useFetchStations = (token: string, page: number) => {
   const [lastPage, setLastPage] = useState(1);
-  const [stationSummaryList, setStationSummaryList] = useState<StationProps[]>([]);
+  const [stationSummaryList, setStationSummaryList] =
+    useExternalState<StationSummary[]>(stationSummaryListStore);
 
-  const config = {
+  const headers = {
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
@@ -30,7 +35,7 @@ export const useFetchStations = (token: string, page: number) => {
           data: { lastPage, elements: stationSummaryList },
         } = await axios.get<StationsResponse>(
           `${BASE_URL}/stations?page=${page}&size=${ROWS_PER_PAGE}`,
-          config
+          headers
         );
 
         setLastPage(lastPage);

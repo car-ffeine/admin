@@ -28,9 +28,9 @@ function AdminTable({ title }: TableProps) {
 
   return (
     <Box sx={{ margin: '32px' }}>
-      <Title>{title}</Title>
+      <Title tabIndex={0}>{title}</Title>
       <TableContainer component={Paper} css={boxShadowCss}>
-        <Table sx={{ minWidth: 500, overflowX: 'auto' }} aria-label="정보 표">
+        <Table tabIndex={0} sx={{ minWidth: 500, overflowX: 'auto' }} aria-label={`${title} 정보`}>
           <AdminTableHead categoryList={STATION_DETAILS_CATEGORY_LIST} />
           <AdminTableBody elements={stationSummaryList} />
         </Table>
@@ -40,9 +40,8 @@ function AdminTable({ title }: TableProps) {
   );
 }
 
-const Title = styled.h1`
-  margin-bottom: 24px;
-  padding-top: 8px;
+const Title = styled.h2`
+  margin: 16px 0 24px;
   font-size: 19px;
   color: #333;
 `;

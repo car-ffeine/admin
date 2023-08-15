@@ -3,28 +3,18 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 
-import { modalActions } from '@store/modalStateStore';
-
-import { stationEditMock } from '@mock';
-
-import Form from '@component/Form';
-
 import { ROWS_PER_PAGE } from '@constant';
 
-import type { StationProps } from '@type';
+import type { StationSummary } from '@type';
+
+import ButtonContainer from './ButtonContainer';
 
 interface Props {
-  elements: StationProps[];
+  elements: StationSummary[];
 }
 
 // TODO: 하드 코딩 없앨 것
 function AdminTableBody({ elements }: Props) {
-  const { openModal } = modalActions;
-
-  const handleOpenModal = () => {
-    openModal(<Form element={stationEditMock} />);
-  };
-
   const emptyRows = ROWS_PER_PAGE - Math.min(ROWS_PER_PAGE, elements.length);
 
   return (
@@ -34,15 +24,12 @@ function AdminTableBody({ elements }: Props) {
           <TableCell
             align="center"
             css={tableItemCommonCss}
-            sx={{ minWidth: 140, height: 40, cursor: 'pointer' }}
+            sx={{ minWidth: 140, fontWeight: 600 }}
             component="th"
             scope="row"
-            onClick={handleOpenModal}
           >
             {element.stationId}
-          </TableCell>
-          <TableCell align="center" css={[tableItemSizeCss, tableItemCommonCss]}>
-            {element.stationName}
+            <ButtonContainer stationId={element.stationId} />
           </TableCell>
           <TableCell
             align="center"

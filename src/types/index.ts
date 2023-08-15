@@ -1,6 +1,6 @@
 import type { MENU_LIST, STATION_DETAILS_CATEGORIES } from '@constant';
 
-export interface StationProps {
+export interface StationSummary {
   stationId: string;
   stationName: string;
   companyName: string;
@@ -23,5 +23,3 @@ export type StationCategoryValues = (typeof STATION_DETAILS_CATEGORIES)[StationC
 
 type ExcludeID<T extends string> = T extends 'ID' ? never : T;
 export type StationCategoryValuesWithoutID = ExcludeID<StationCategoryValues>;
-
-export interface StationEditProps extends Omit<StationProps, 'stationId'> {}
