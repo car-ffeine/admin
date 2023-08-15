@@ -28,6 +28,7 @@ function LoginModalContent() {
 }
 
 const Container = styled.div`
+  max-width: 500px;
   margin: 8px auto 48px;
   text-align: center;
   font-size: 15px;
@@ -54,7 +55,7 @@ const GoogleLogin = styled.button`
   column-gap: 66px;
 
   width: 292px;
-  margin: 0 auto;
+  margin: 0 auto -10px;
   padding: 0 18px;
   background: transparent;
 

@@ -107,7 +107,7 @@ function Form({ element }: FormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmitForm}>
+    <AdminForm onSubmit={handleSubmitForm}>
       <Title>충전소 정보 수정</Title>
       <Fieldset>
         {getTypedObjectEntries(element).map(([key, value]) => {
@@ -165,9 +165,13 @@ function Form({ element }: FormProps) {
         </Button>
         <Button type="submit">수정하기</Button>
       </ButtonContainer>
-    </form>
+    </AdminForm>
   );
 }
+
+const AdminForm = styled.form`
+  max-width: 800px;
+`;
 
 const Fieldset = styled.fieldset`
   display: flex;

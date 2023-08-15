@@ -9,10 +9,9 @@ interface Props {
   isOpen: boolean;
   onClose: () => void;
   children: JSX.Element;
-  size?: number;
 }
 
-const Modal = ({ isOpen, onClose, children, size }: Props) => {
+const Modal = ({ isOpen, onClose, children }: Props) => {
   const handlePreventModalClose = (event: MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
   };
@@ -23,12 +22,7 @@ const Modal = ({ isOpen, onClose, children, size }: Props) => {
 
   return (
     <ModalBackdrop className="modal-open" onClick={onClose}>
-      <ModalContent
-        role="dialog"
-        aria-live="assertive"
-        onClick={handlePreventModalClose}
-        size={size}
-      >
+      <ModalContent role="dialog" aria-live="assertive" onClick={handlePreventModalClose}>
         {onClose ? (
           <IconButton
             aria-label="닫기 버튼"
@@ -77,11 +71,9 @@ const ModalBackdrop = styled.div`
   animation: ${fadeIn} 0.2s ease-in-out;
 `;
 
-const ModalContent = styled.div<{ size?: number }>`
+const ModalContent = styled.div`
   position: relative;
 
-  width: 100%;
-  max-width: ${({ size }) => (size ? `${size}px` : 800)};
   max-height: calc(100% - 56px);
   margin: 28px;
   padding: 36px 28px 20px;
