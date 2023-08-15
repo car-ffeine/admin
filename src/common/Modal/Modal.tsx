@@ -74,7 +74,7 @@ const ModalBackdrop = styled.div`
 const ModalContent = styled.div`
   position: relative;
 
-  max-height: calc(100% - 56px);
+  max-height: calc(100% - 200px);
   margin: 28px;
   padding: 36px 28px 20px;
   background: #fff;
