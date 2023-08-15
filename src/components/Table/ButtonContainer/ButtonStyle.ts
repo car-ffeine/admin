@@ -3,8 +3,8 @@ import styled from '@emotion/styled';
 export const Button = styled.button`
   display: flex;
   align-items: center;
-  column-gap: 6px;
-  margin-right: 12px;
+  padding: 1px 6px 1px 2px;
+  margin-right: 8px;
   &:last-child {
     margin-right: 0;
   }
@@ -12,7 +12,6 @@ export const Button = styled.button`
   background: transparent;
   border: 1.4px solid #7f7f7f;
   border-radius: 8px;
-  padding: 2px 8px;
   cursor: pointer;
 
   &:hover {

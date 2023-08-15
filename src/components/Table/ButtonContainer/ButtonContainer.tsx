@@ -30,15 +30,15 @@ function ButtonContainer({ stationId }: ButtonContainerProps) {
 
   return (
     <Container>
-      <EditButton handleEditTable={handleEditTable} />
       <DetailsButton />
+      <EditButton handleEditTable={handleEditTable} />
     </Container>
   );
 }
 
 const Container = styled.div`
   display: flex;
-  margin: 12px 0;
+  margin-top: 6px;
 `;
 
 export default ButtonContainer;
