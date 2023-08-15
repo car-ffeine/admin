@@ -1,8 +1,10 @@
 import { useSuspenseQuery } from '@suspensive/react-query';
+import { useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 
+import { useEffect } from 'react';
+
 import { memberTokenStore } from '@store/memberTokenStore';
-import { currentPageStore } from '@store/pageStore';
 
 import { ROWS_PER_PAGE } from '@constant';
 import { QUERY_KEY_STATION_SUMMARY } from '@constant/queryKeys';
@@ -32,12 +34,27 @@ const fetchStationsSummary = async (token: string, page: number) => {
   return { lastPage, stationSummaryList };
 };
 
-export const useFetchStationsSummary = () => {
+export const useFetchStationsSummary = (page: number) => {
   const token = memberTokenStore.getState();
-  const page = currentPageStore.getState();
 
   return useSuspenseQuery({
     queryKey: [QUERY_KEY_STATION_SUMMARY, page],
     queryFn: () => fetchStationsSummary(token, page),
+    refetchOnWindowFocus: false,
+    keepPreviousData: true,
   });
+};
+
+export const usePrefetchStationSummary = (currentPage: number, lastPage: number) => {
+  const queryClient = useQueryClient();
+  const token = memberTokenStore.getState();
+
+  useEffect(() => {
+    if (currentPage < lastPage) {
+      const nextPage = currentPage + 1;
+      queryClient.prefetchQuery([QUERY_KEY_STATION_SUMMARY, nextPage], () =>
+        fetchStationsSummary(token, nextPage)
+      );
+    }
+  }, [currentPage, queryClient, token, lastPage]);
 };

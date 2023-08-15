@@ -5,11 +5,18 @@ import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableContainer from '@mui/material/TableContainer';
 
+import type { ChangeEvent } from 'react';
+import { useState } from 'react';
+
 import { useSetExternalState } from '@util/external-state';
 
+import { currentPageStore } from '@store/pageStore';
 import { stationSummaryListStore } from '@store/stationSummaryListStore';
 
-import { useFetchStationsSummary } from '@hook/stations/useFetchStationsSummary';
+import {
+  useFetchStationsSummary,
+  usePrefetchStationSummary,
+} from '@hook/stations/useFetchStationsSummary';
 
 import { STATION_SUMMARY_CATEGORY_LIST } from '@constant';
 
@@ -24,12 +31,19 @@ export interface TableProps {
 }
 
 function AdminTable({ title }: TableProps) {
+  const [currentPage, setCurrentPage] = useState(1);
   const {
     data: { lastPage, stationSummaryList },
-  } = useFetchStationsSummary();
+  } = useFetchStationsSummary(currentPage);
+
+  usePrefetchStationSummary(currentPage, lastPage);
+
+  const handleChangePage = (_: ChangeEvent<unknown>, page: number) => {
+    setCurrentPage(page);
+    currentPageStore.setState(currentPage);
+  };
 
   const setStationSummaryList = useSetExternalState<StationSummary[]>(stationSummaryListStore);
-
   setStationSummaryList(stationSummaryList);
 
   return (
@@ -41,7 +55,7 @@ function AdminTable({ title }: TableProps) {
           <AdminTableBody elements={stationSummaryList} />
         </Table>
       </TableContainer>
-      <AdminTablePagination lastPage={lastPage} />
+      <AdminTablePagination lastPage={lastPage} handleChangePage={handleChangePage} />
     </Box>
   );
 }

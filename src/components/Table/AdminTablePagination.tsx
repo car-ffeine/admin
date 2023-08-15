@@ -4,13 +4,10 @@ import type { ChangeEvent } from 'react';
 
 export interface TablePaginationProps {
   lastPage: number;
+  handleChangePage: (_: ChangeEvent<unknown>, page: number) => void;
 }
 
-function AdminTablePagination({ lastPage }: TablePaginationProps) {
-  const handleChangePage = (_: ChangeEvent<unknown>, page: number) => {
-    console.log(page, 'page');
-  };
-
+function AdminTablePagination({ lastPage, handleChangePage }: TablePaginationProps) {
   return (
     <Pagination
       sx={{ width: 'max-content', margin: '20px auto' }}
