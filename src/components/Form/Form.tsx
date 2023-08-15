@@ -16,14 +16,13 @@ import { getTypedObjectEntries } from '@util/typed-object/getTypedObjectEntries'
 import { getTypedObjectFromEntries } from '@util/typed-object/getTypedObjectFromEntries';
 
 import { modalOpenStore } from '@store/modalStateStore';
-import { editedStationSummaryStore } from '@store/stationSummaryListStore';
 import { toastActions } from '@store/toastStore';
 
 import { useRequestStationEdit } from '@hook/stations/useRequestStationEdit';
 
 import { lineClampCss } from '@style';
 
-import { STATION_DETAILS_CATEGORIES } from '@constant';
+import { STATION_SUMMARY_CATEGORIES } from '@constant';
 
 import type { StationSummary } from '@type';
 
@@ -35,7 +34,6 @@ function Form({ element }: FormProps) {
   const [inputs, setInputs] = useState(element);
 
   const setIsModalOpen = useSetExternalState(modalOpenStore);
-  const setEditedStationSummary = useSetExternalState(editedStationSummaryStore);
   const { requestEdit } = useRequestStationEdit();
 
   const handleCloseModal = () => {
@@ -75,14 +73,13 @@ function Form({ element }: FormProps) {
       return;
     }
 
-    setEditedStationSummary(formData);
-    requestEdit(element.stationId);
+    requestEdit(element.stationId, formData);
     handleCloseModal();
   };
 
   const compareFormDataToObject = (formData: FormData) => {
     const editedFormData = getTypedObjectFromEntries([...formData]);
-    const originalValuesWithoutId = Object.entries(element)
+    const originalValuesWithoutId = getTypedObjectEntries(element)
       .filter(([key]) => key !== 'stationId')
       .map(([_, value]) => value);
     const formValues = Object.values(editedFormData).map((value) => convertValue(value));
@@ -107,7 +104,7 @@ function Form({ element }: FormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmitForm}>
+    <AdminForm onSubmit={handleSubmitForm}>
       <Title>충전소 정보 수정</Title>
       <Fieldset>
         {getTypedObjectEntries(element).map(([key, value]) => {
@@ -121,7 +118,7 @@ function Form({ element }: FormProps) {
                 <TextField
                   name={key}
                   type="text"
-                  label={STATION_DETAILS_CATEGORIES[key]}
+                  label={STATION_SUMMARY_CATEGORIES[key]}
                   variant="outlined"
                   css={labelCss}
                   value={inputs[key]}
@@ -130,13 +127,13 @@ function Form({ element }: FormProps) {
               ) : (
                 <FormControl fullWidth>
                   <InputLabel id={`select-label-${key}`}>
-                    {STATION_DETAILS_CATEGORIES[key]}
+                    {STATION_SUMMARY_CATEGORIES[key]}
                   </InputLabel>
                   <Select
                     labelId={`select-label-${key}`}
                     id={`select-${key}`}
                     name={key}
-                    label={STATION_DETAILS_CATEGORIES[key]}
+                    label={STATION_SUMMARY_CATEGORIES[key]}
                     value={String(inputs[key])}
                     onChange={handleChangeSelect}
                   >
@@ -165,9 +162,13 @@ function Form({ element }: FormProps) {
         </Button>
         <Button type="submit">수정하기</Button>
       </ButtonContainer>
-    </form>
+    </AdminForm>
   );
 }
+
+const AdminForm = styled.form`
+  max-width: 800px;
+`;
 
 const Fieldset = styled.fieldset`
   display: flex;

@@ -1,10 +1,13 @@
 import styled from '@emotion/styled';
 
+import { startTransition } from 'react';
+
 import { modalActions } from '@store/modalStateStore';
 import { findSelectedStationSummary } from '@store/stationSummaryListStore';
 import { toastActions } from '@store/toastStore';
 
 import Form from '@component/Form';
+import StationDetails from '@component/StationDetails';
 
 import DetailsButton from './DetailsButton';
 import EditButton from './EditButton';
@@ -16,6 +19,13 @@ export interface ButtonContainerProps {
 function ButtonContainer({ stationId }: ButtonContainerProps) {
   const { openModal } = modalActions;
   const { showToast } = toastActions;
+
+  const handleShowDetails = () => {
+    startTransition(() => {
+      openModal(<StationDetails stationId={stationId} />);
+    });
+  };
+
   const stationSummary = findSelectedStationSummary(stationId);
 
   const handleEditTable = () => {
@@ -30,7 +40,7 @@ function ButtonContainer({ stationId }: ButtonContainerProps) {
 
   return (
     <Container>
-      <DetailsButton />
+      <DetailsButton handleShowDetails={handleShowDetails} />
       <EditButton handleEditTable={handleEditTable} />
     </Container>
   );

@@ -1,4 +1,12 @@
-export const STATION_DETAILS_CATEGORIES = {
+export const MENU_LIST = [
+  '회원 관리',
+  '충전소 관리',
+  '충전소 제보 관리',
+  '충전기 신고 관리',
+  '간편 로그인',
+] as const;
+
+export const STATION_SUMMARY_CATEGORIES = {
   stationId: 'ID',
   stationName: '이름',
   address: '주소',
@@ -14,15 +22,12 @@ export const STATION_DETAILS_CATEGORIES = {
   stationState: '충전소 기타 정보',
 } as const;
 
-export const STATION_DETAILS_CATEGORY_LIST = Object.values(STATION_DETAILS_CATEGORIES);
+export const STATION_DETAILS_CATEGORIES = {
+  chargers: '충전기',
+  ...STATION_SUMMARY_CATEGORIES,
+} as const;
+
+export const STATION_SUMMARY_CATEGORY_LIST = Object.values(STATION_SUMMARY_CATEGORIES);
 
 export const ROWS_PER_PAGE = 10;
 export const LAST_PAGE = 12;
-
-export const MENU_LIST = [
-  '회원 관리',
-  '충전소 관리',
-  '충전소 제보 관리',
-  '충전기 신고 관리',
-  '간편 로그인',
-] as const;

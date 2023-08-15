@@ -34,7 +34,7 @@ export const NavigationMenu = ({ menus }: NavigationProps) => {
 
   const handleClickMenu = (menu: Menu) => {
     if (menu === '간편 로그인' && !isLoggedIn) {
-      openModal(<LoginModalContent />, 500);
+      openModal(<LoginModalContent />);
     }
 
     if (menu === '간편 로그인' && isLoggedIn) {

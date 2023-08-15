@@ -5,9 +5,9 @@ import { ReactComponent as CarLoading } from '@asset/car-loading.svg';
 function Loading() {
   return (
     <>
-      <LoginMessage>
-        로그인 중입니다<span>잠시만 기다려 주세요...</span>
-      </LoginMessage>
+      <Message>
+        열심히 로딩하고 있어요<span>잠시만 기다려 주세요...</span>
+      </Message>
       <LoadingSvgContainer>
         <CarLoading />
       </LoadingSvgContainer>
@@ -15,9 +15,9 @@ function Loading() {
   );
 }
 
-const LoginMessage = styled.h2`
+const Message = styled.h2`
   width: fit-content;
-  margin: 280px auto 0;
+  margin: 23% auto 0;
   text-align: center;
 
   & > span {

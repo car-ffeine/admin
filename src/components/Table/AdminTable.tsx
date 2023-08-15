@@ -9,7 +9,7 @@ import { memberTokenStore } from '@store/memberTokenStore';
 
 import { useFetchStations } from '@hook/stations/useFetchStations';
 
-import { STATION_DETAILS_CATEGORY_LIST } from '@constant';
+import { STATION_SUMMARY_CATEGORY_LIST } from '@constant';
 
 import AdminTableBody from './AdminTableBody';
 import AdminTableHead from './AdminTableHead';
@@ -31,7 +31,7 @@ function AdminTable({ title }: TableProps) {
       <Title tabIndex={0}>{title}</Title>
       <TableContainer component={Paper} css={boxShadowCss}>
         <Table tabIndex={0} sx={{ minWidth: 500, overflowX: 'auto' }} aria-label={`${title} 정보`}>
-          <AdminTableHead categoryList={STATION_DETAILS_CATEGORY_LIST} />
+          <AdminTableHead categoryList={STATION_SUMMARY_CATEGORY_LIST} />
           <AdminTableBody elements={stationSummaryList} />
         </Table>
       </TableContainer>

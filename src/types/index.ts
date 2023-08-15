@@ -1,4 +1,8 @@
-import type { MENU_LIST, STATION_DETAILS_CATEGORIES } from '@constant';
+import type { MENU_LIST, STATION_SUMMARY_CATEGORIES } from '@constant';
+
+export interface StationDetails extends StationSummary {
+  chargers: Charger[];
+}
 
 export interface StationSummary {
   stationId: string;
@@ -16,10 +20,18 @@ export interface StationSummary {
   longitude: number;
 }
 
+export interface Charger {
+  chargerId: string;
+  type: string;
+  price: number;
+  capacity: number;
+  method: '단독' | '동시' | null;
+}
+
 export type Menu = (typeof MENU_LIST)[number];
 
-export type StationCategoryKeys = keyof typeof STATION_DETAILS_CATEGORIES;
-export type StationCategoryValues = (typeof STATION_DETAILS_CATEGORIES)[StationCategoryKeys];
+export type StationCategoryKeys = keyof typeof STATION_SUMMARY_CATEGORIES;
+export type StationCategoryValues = (typeof STATION_SUMMARY_CATEGORIES)[StationCategoryKeys];
 
 type ExcludeID<T extends string> = T extends 'ID' ? never : T;
 export type StationCategoryValuesWithoutID = ExcludeID<StationCategoryValues>;

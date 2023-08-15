@@ -1,9 +1,12 @@
 import { CssBaseline } from '@mui/material';
 import type { Preview } from '@storybook/react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import React from 'react';
 
 import '../src/common.css';
+
+const queryClient = new QueryClient();
 
 const preview: Preview = {
   parameters: {
@@ -57,7 +60,9 @@ const preview: Preview = {
       (Story) => (
         <React.Fragment>
           <CssBaseline />
-          <Story />
+          <QueryClientProvider client={queryClient}>
+            <Story />
+          </QueryClientProvider>
         </React.Fragment>
       ),
     ],
