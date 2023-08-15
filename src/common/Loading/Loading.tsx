@@ -17,7 +17,7 @@ function Loading() {
 
 const Message = styled.h2`
   width: fit-content;
-  margin: 30% auto 0;
+  margin: 23% auto 0;
   text-align: center;
 
   & > span {

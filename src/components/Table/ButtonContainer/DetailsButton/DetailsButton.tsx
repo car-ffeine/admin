@@ -1,18 +1,12 @@
 import { DocumentTextIcon } from '@heroicons/react/24/outline';
 
-import { modalActions } from '@store/modalStateStore';
-
-import StationDetails from '@component/StationDetails';
-
 import { Button } from '../ButtonStyle';
 
-function DetailsButton() {
-  const { openModal } = modalActions;
+interface Props {
+  handleShowDetails: () => void;
+}
 
-  const handleShowDetails = () => {
-    openModal(<StationDetails />);
-  };
-
+function DetailsButton({ handleShowDetails }: Props) {
   return (
     <Button type="button" aria-label="상세보기" onClick={handleShowDetails}>
       <DocumentTextIcon width={24} />
