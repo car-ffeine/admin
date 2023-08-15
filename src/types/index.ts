@@ -23,5 +23,3 @@ export type StationCategoryValues = (typeof STATION_DETAILS_CATEGORIES)[StationC
 
 type ExcludeID<T extends string> = T extends 'ID' ? never : T;
 export type StationCategoryValuesWithoutID = ExcludeID<StationCategoryValues>;
-
-export interface StationEditProps extends Omit<StationSummary, 'stationId'> {}
