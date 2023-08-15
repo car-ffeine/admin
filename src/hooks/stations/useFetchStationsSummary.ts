@@ -2,7 +2,7 @@ import { useSuspenseQuery } from '@suspensive/react-query';
 import axios from 'axios';
 
 import { memberTokenStore } from '@store/memberTokenStore';
-import { currentPage } from '@store/pageStore';
+import { currentPageStore } from '@store/pageStore';
 
 import { ROWS_PER_PAGE } from '@constant';
 import { QUERY_KEY_STATION_SUMMARY } from '@constant/queryKeys';
@@ -34,7 +34,7 @@ const fetchStationsSummary = async (token: string, page: number) => {
 
 export const useFetchStationsSummary = () => {
   const token = memberTokenStore.getState();
-  const page = currentPage.getState();
+  const page = currentPageStore.getState();
 
   return useSuspenseQuery({
     queryKey: [QUERY_KEY_STATION_SUMMARY, page],

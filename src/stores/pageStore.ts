@@ -1,3 +1,3 @@
-import { store } from "@util/external-state";
+import { store } from '@util/external-state';
 
-export const currentPage = store<number>(1);
+export const currentPageStore = store<number>(1);
