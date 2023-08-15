@@ -27,11 +27,11 @@ import { STATION_DETAILS_CATEGORIES } from '@constant';
 
 import type { StationSummary } from '@type';
 
-interface Props {
+export interface FormProps {
   element: StationSummary;
 }
 
-function Form({ element }: Props) {
+function Form({ element }: FormProps) {
   const [inputs, setInputs] = useState(element);
 
   const setIsModalOpen = useSetExternalState(modalOpenStore);
