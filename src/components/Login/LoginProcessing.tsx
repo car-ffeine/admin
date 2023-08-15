@@ -1,6 +1,6 @@
 import { useMemberToken } from '@hook/login/useMemberToken';
 
-import Loading from './Loading';
+import Loading from '@common/Loading';
 
 function LoginProcessing() {
   const { loginError } = useMemberToken();

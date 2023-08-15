@@ -5,9 +5,9 @@ import 'common.css';
 import { Suspense } from 'react';
 
 import Error from '@common/Error';
+import Loading from '@common/Loading';
 import ToastContainer from '@common/Toast/ToastContainer';
 
-import Loading from '@component/Login/Loading';
 import ModalContainer from '@component/ModalContainer';
 import NavigationContainer from '@component/Navigation';
 import AdminTable from '@component/Table';
