@@ -43,6 +43,7 @@ const headerCss = css`
   box-shadow: none;
   background: #0a5ed9;
   position: static;
+  z-index: 9;
 `;
 
 export default Navigation;
